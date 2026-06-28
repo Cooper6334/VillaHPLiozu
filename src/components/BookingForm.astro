@@ -1,0 +1,166 @@
+---
+// 自製同風格訂房表單，送出時 POST 到 Google 表單（資料進你的試算表），使用者不離開頁面。
+// 欄位對應的 entry 代碼來自該 Google 表單；若日後換表單，請更新下方 fields 的 entry 與 site.googleFormUrl。
+import { getContent } from '../data/content';
+
+const { site, contact } = getContent(Astro.currentLocale);
+const f = contact.form;
+
+// 由 viewform 網址推導出送出端點 /formResponse
+const action = site.googleFormUrl.replace(/\/viewform.*$/, '/formResponse');
+
+// 各 Google 表單欄位的 entry 代碼
+const E = {
+  checkin: 'entry.592338129',
+  checkout: 'entry.1335072939',
+  adults: 'entry.2059770217',
+  children: 'entry.1124968974',
+  name: 'entry.1710154467',
+  contact: 'entry.1146253173',
+  message: 'entry.667379932',
+};
+---
+
+<form
+  class="booking-form"
+  method="POST"
+  action={action}
+  target="gform-target"
+  data-sending={f.sending}
+  data-success={f.success}
+  data-error={f.error}
+>
+  <div class="bf-grid">
+    <label class="bf-field">
+      <span>{f.checkin} <i class="req">*</i></span>
+      <input type="date" data-date={E.checkin} required />
+    </label>
+    <label class="bf-field">
+      <span>{f.checkout} <i class="req">*</i></span>
+      <input type="date" data-date={E.checkout} required />
+    </label>
+    <label class="bf-field">
+      <span>{f.adults} <i class="req">*</i></span>
+      <input type="number" name={E.adults} min="1" inputmode="numeric" required />
+    </label>
+    <label class="bf-field">
+      <span>{f.children} <i class="req">*</i></span>
+      <input type="number" name={E.children} min="0" inputmode="numeric" required />
+    </label>
+    <label class="bf-field bf-full">
+      <span>{f.name} <i class="req">*</i></span>
+      <input type="text" name={E.name} required />
+    </label>
+    <label class="bf-field bf-full">
+      <span>{f.contact} <i class="req">*</i></span>
+      <input type="text" name={E.contact} required />
+    </label>
+    <label class="bf-field bf-full">
+      <span>{f.message} <em>{f.optional}</em></span>
+      <textarea name={E.message} rows="3"></textarea>
+    </label>
+  </div>
+
+  {/* Google 表單日期欄位需拆成 年/月/日 三個參數，送出前由 JS 填入 */}
+  <input type="hidden" name={`${E.checkin}_year`} /><input type="hidden" name={`${E.checkin}_month`} /><input type="hidden" name={`${E.checkin}_day`} />
+  <input type="hidden" name={`${E.checkout}_year`} /><input type="hidden" name={`${E.checkout}_month`} /><input type="hidden" name={`${E.checkout}_day`} />
+
+  <button type="submit" class="btn bf-submit">{f.submit}</button>
+  <p class="bf-status" role="status" hidden></p>
+</form>
+
+<iframe name="gform-target" class="bf-target" title="form target" aria-hidden="true"></iframe>
+
+<style>
+  .booking-form { width: 100%; }
+  .bf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem 1.5rem;
+  }
+  .bf-full { grid-column: 1 / -1; }
+  .bf-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .bf-field > span {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: var(--color-muted);
+  }
+  .bf-field .req { color: #c0392b; font-style: normal; }
+  .bf-field em { font-style: normal; font-size: 0.75rem; opacity: 0.7; }
+  .bf-field input,
+  .bf-field textarea {
+    border: none;
+    border-bottom: 1px solid var(--color-line);
+    background: transparent;
+    padding: 0.5rem 0.1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--color-text);
+    transition: border-color 0.3s;
+  }
+  .bf-field textarea { resize: vertical; line-height: 1.7; }
+  .bf-field input:focus,
+  .bf-field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-dark);
+  }
+  .bf-submit {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+    cursor: pointer;
+  }
+  .bf-status {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+  .bf-status.success { color: #2f6b3c; }
+  .bf-status.error { color: #c0392b; }
+  .bf-status.sending { color: var(--color-muted); }
+  .bf-target { display: none; }
+
+  @media (max-width: 520px) {
+    .bf-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.booking-form').forEach((form) => {
+    const statusEl = form.querySelector<HTMLParagraphElement>('.bf-status')!;
+    const iframe = form.parentElement?.querySelector<HTMLIFrameElement>('iframe.bf-target');
+    let submitted = false;
+
+    const setStatus = (text: string, cls: string) => {
+      statusEl.hidden = false;
+      statusEl.textContent = text;
+      statusEl.className = 'bf-status ' + cls;
+    };
+
+    form.addEventListener('submit', () => {
+      // 把 <input type=date> 的 YYYY-MM-DD 拆進 Google 表單需要的 年/月/日 隱藏欄位
+      form.querySelectorAll<HTMLInputElement>('input[data-date]').forEach((inp) => {
+        const base = inp.getAttribute('data-date')!;
+        const [y, m, d] = (inp.value || '').split('-');
+        const set = (suffix: string, val: string) => {
+          const el = form.querySelector<HTMLInputElement>(`input[name="${base}${suffix}"]`);
+          if (el) el.value = val;
+        };
+        set('_year', y || '');
+        set('_month', m ? String(parseInt(m, 10)) : '');
+        set('_day', d ? String(parseInt(d, 10)) : '');
+      });
+      submitted = true;
+      setStatus(form.dataset.sending || '', 'sending');
+    });
+
+    // 送出後 Google 會在隱藏 iframe 載入「已送出」頁，藉 load 事件顯示成功訊息
+    iframe?.addEventListener('load', () => {
+      if (!submitted) return; // 略過頁面初次載入
+      setStatus(form.dataset.success || '', 'success');
+      form.reset();
+      submitted = false;
+    });
+  });
+</script>

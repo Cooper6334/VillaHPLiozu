@@ -184,6 +184,18 @@
   - build 成功 10 頁；驗證 /en 出英文、/ 出中文無洩漏、nav 與語言切換連結正確、html lang=en
 - Files: astro.config.mjs, content.zh.json(改名), content.en.json(新), content.ts, LanguageSwitcher.astro(新), 全部 components+pages, en/*.astro(新5)
 
+### 自製訂房表單（送進 Google 表單）
+- **Status:** complete
+- Actions taken:
+  - 解析 Google 表單欄位 entry 代碼（入住/退房日期、大人/小孩人數、姓名、電話、Line）
+  - 新增 BookingForm.astro：原生同風格表單，POST 到 .../formResponse，target 隱藏 iframe（不離開頁面），日期拆 _year/_month/_day，送出後顯示成功訊息、reset
+  - content.zh/en 的 contact 新增 form 區（欄位標籤/送出/成功/失敗訊息，雙語）
+  - contact.astro 改雙欄：左聯絡資訊+LINE鈕、右訂房表單（hasForm 才顯示）
+  - 修：content.en.json site.googleFormUrl 原為空→補上同網址，英文頁才會顯示表單
+  - build 成功；驗證中英文 contact 都有 <form>、action=formResponse、entry 欄位、雙語標籤
+  - 待使用者實測送出一筆確認進 Google 試算表
+- Files: BookingForm.astro(新), contact.astro, content.zh.json, content.en.json
+
 ## Test Results
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|

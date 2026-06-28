@@ -28,7 +28,14 @@ const { intro, summary, sectionEyebrow, sectionTitle, labels, buttonText, note, 
         <div class="summary-title">{summary.heading}</div>
         <dl class="summary-list">
           {summary.items.map((item) => (
-            <div class="summary-row"><dt>{item.label}</dt><dd>{item.value}</dd></div>
+            <div class="summary-row">
+              <dt>{item.label}</dt>
+              <dd>
+                {Array.isArray(item.value)
+                  ? item.value.map((v) => <span class="summary-line">{v}</span>)
+                  : item.value}
+              </dd>
+            </div>
           ))}
         </dl>
       </div>
@@ -107,6 +114,7 @@ const { intro, summary, sectionEyebrow, sectionTitle, labels, buttonText, note, 
   .summary-row:last-child { border-bottom: none; }
   .summary-row dt { min-width: 110px; margin: 0; color: var(--color-muted); letter-spacing: 3px; }
   .summary-row dd { margin: 0; }
+  .summary-line { display: block; }
 
   @media (max-width: 600px) {
     .summary-row { flex-direction: column; gap: 0.3rem; }

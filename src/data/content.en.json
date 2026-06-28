@@ -15,7 +15,7 @@
     "license": "B&B License No. 2560",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
     "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
-    "googleFormUrl": ""
+    "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdbznoUXkIX5LplykNf4Zaw0D-MJhfMWXFkhPIxa3mGlanfCQ/viewform?embedded=true"
   },
 
   "nav": [
@@ -106,7 +106,7 @@
       "heading": "Whole-House Rental",
       "items": [
         { "label": "Rental", "value": "Whole-house booking only; individual rooms are not rented separately." },
-        { "label": "Rooms", "value": "Type 1 large rooms × 3, Type 2 standard rooms × 4, 7 rooms in total." },
+        { "label": "Rooms", "value": ["Type 1: Large rooms × 3", "Type 2: Standard rooms × 4"] },
         { "label": "Capacity", "value": "Up to 20 guests (Type 1 with sofa bed 3–4 ppl/room, Type 2 double 2 ppl/room)." },
         { "label": "Bathroom", "value": "Rooms do not have private bathrooms; two shared bathrooms are available throughout the house." }
       ]
@@ -154,9 +154,19 @@
         "images": ["/images/childplace.jpg"]
       },
       {
-        "name": "Outdoor Pool",
-        "description": "An outdoor swimming pool — the perfect spot to cool off and play in summer.",
-        "images": ["/images/pool.jpg", "/images/pool_2.jpg", "/images/pool_3.jpg"]
+        "name": "Splash Pool",
+        "description": "An outdoor splash pool — perfect for cooling off and playing in summer — plus a barbecue grill for outdoor BBQ gatherings.",
+        "images": ["/images/pool_3.jpg", "/images/pool.jpg", "/images/pool_2.jpg"]
+      },
+      {
+        "name": "Automatic Mahjong Table",
+        "description": "An automatic mahjong table for fun-filled gatherings with friends and family.",
+        "images": ["/images/mahjong.jpg"]
+      },
+      {
+        "name": "Kitchen",
+        "description": "A kitchen with basic cooking equipment, so you can prepare your own meals.",
+        "images": ["/images/kitchen.jpg"]
       },
       {
         "name": "Shared Bathrooms",
@@ -227,6 +237,21 @@
     "instagramText": "Instagram",
     "formTitle": "Online inquiry form",
     "loadingText": "Loading…",
-    "formHint": "Prefer an online form? Create a Google Form and paste its embed URL into site.googleFormUrl in content, and the embedded form will appear here."
+    "formHint": "Prefer an online form? Create a Google Form and paste its embed URL into site.googleFormUrl in content, and the embedded form will appear here.",
+    "form": {
+      "heading": "Booking Inquiry",
+      "checkin": "Check-in date",
+      "checkout": "Check-out date",
+      "adults": "Adults",
+      "children": "Children",
+      "name": "Name",
+      "contact": "Contact (phone / LINE)",
+      "message": "Your message",
+      "optional": "(optional)",
+      "submit": "Send inquiry",
+      "sending": "Sending…",
+      "success": "Thank you! We've received your inquiry and will get back to you soon.",
+      "error": "Submission failed. Please try again later, or contact us on LINE."
+    }
   }
 }

@@ -15,7 +15,7 @@
     "license": "民宿登記證編號：2560 號",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
     "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
-    "googleFormUrl": ""
+    "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdbznoUXkIX5LplykNf4Zaw0D-MJhfMWXFkhPIxa3mGlanfCQ/viewform?embedded=true"
   },
 
   "nav": [
@@ -53,8 +53,8 @@
 
   "home": {
     "hero": [
-      { "image": "/images/house.jpg", "caption": "民宿外觀" },
-      { "image": "/images/pool.jpg", "caption": "戲水池" },
+      { "image": "/images/rocking-chair.jpg", "caption": "民宿外觀" },
+      { "image": "/images/pool_3.jpg", "caption": "戲水池" },
       { "image": "/images/livingroom_1.jpg", "caption": "客廳空間" }
     ],
     "intro": {
@@ -106,8 +106,8 @@
       "heading": "包棟說明",
       "items": [
         { "label": "出租方式", "value": "僅接受整棟包棟，恕不單獨出租房間" },
-        { "label": "房型", "value": "<房型 1> 大房間 3 間 <房型 2> 一般房 4 間" },
-        { "label": "可住人數", "value": "最多可住 20 人（房型 1 含沙發床 3–4 人／間、房型 2 雙人 2 人／間）" },
+        { "label": "房型", "value": ["房型 1：大房間 3 間", "房型 2：一般房 4 間"] },
+        { "label": "可住人數", "value": "建議入住人數12~18人（房型 1 含沙發床 3–4 人／間、房型 2 雙人 2 人／間）" },
         { "label": "衛浴", "value": "房間無獨立衛浴，全館提供 2 間共用衛浴" }
       ]
     },
@@ -154,9 +154,19 @@
         "images": ["/images/childplace.jpg"]
       },
       {
-        "name": "戶外泳池",
-        "description": "戶外戲水泳池，夏日消暑、親子戲水的最佳去處。",
-        "images": ["/images/pool.jpg", "/images/pool_2.jpg", "/images/pool_3.jpg"]
+        "name": "戲水池",
+        "description": "戶外戲水池，夏日消暑、親子戲水的最佳去處；並設有烤肉爐，可享受戶外烤肉的歡聚時光。",
+        "images": ["/images/pool_3.jpg", "/images/pool.jpg", "/images/pool_2.jpg"]
+      },
+      {
+        "name": "電動麻將桌",
+        "description": "備有電動麻將桌，與親友相聚同樂、盡情暢玩。",
+        "images": ["/images/mahjong.jpg"]
+      },
+      {
+        "name": "廚房",
+        "description": "提供廚房空間與基本烹調設備，可自行下廚、料理三餐。",
+        "images": ["/images/kitchen.jpg"]
       },
       {
         "name": "共用衛浴",
@@ -184,7 +194,7 @@
     "notes": [
       { "label": "入住 / 退房", "desc": "入住 15:00 後，退房 11:00 前" },
       { "label": "吸菸規定", "desc": "全館禁菸，吸菸請至指定區域" },
-      { "label": "寵物", "desc": "恕不接受寵物入住（如有需求請先洽詢）" },
+      { "label": "寵物", "desc": "本館歡迎攜帶寵物來玩喔" },
       { "label": "退訂", "desc": "退訂與改期請參考訂房時提供之規定" }
     ],
     "disclaimer": "※ 以上為示意內容，正式條款請依民宿公告為準。"
@@ -223,10 +233,25 @@
       "facebook": "Facebook",
       "address": "地址"
     },
-    "facebookText": "粉絲專頁",
-    "instagramText": "Instagram",
+    "facebookText": "https://www.facebook.com/liozu.stay/",
+    "instagramText": "https://www.instagram.com/liozu.stay/",
     "formTitle": "線上詢問表單",
     "loadingText": "載入中…",
-    "formHint": "想改用線上表單？建立一份 Google 表單後，把嵌入網址填入 content.json 的 site.googleFormUrl，這裡就會自動顯示嵌入式表單。"
+    "formHint": "想改用線上表單？建立一份 Google 表單後，把嵌入網址填入 content.json 的 site.googleFormUrl，這裡就會自動顯示嵌入式表單。",
+    "form": {
+      "heading": "訂房諮詢",
+      "checkin": "入住日期",
+      "checkout": "退房日期",
+      "adults": "大人人數",
+      "children": "小孩人數",
+      "name": "姓名",
+      "contact": "聯絡方式（LINE/Email/電話號碼...）",
+      "message": "想詢問的內容",
+      "optional": "（選填）",
+      "submit": "送出詢問",
+      "sending": "送出中…",
+      "success": "已收到您的訂房諮詢，我們會盡快與您聯繫，謝謝！",
+      "error": "送出失敗，請稍後再試，或改用 LINE 與我們聯繫。"
+    }
   }
 }
