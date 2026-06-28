@@ -44,6 +44,7 @@ Thumbs.db
 # Wrangler / Cloudflare
 .wrangler/
 
+todo.txt
 # lock files (視情況保留一個即可)
 # package-lock.json
 # yarn.lock
