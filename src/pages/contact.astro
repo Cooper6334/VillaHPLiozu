@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getContent } from '../data/content';
+
+const c = getContent(Astro.currentLocale);
+const { site } = c;
+const contactContent = c.contact;
+const { intro, buttonText, infoLabels, facebookText, instagramText, formTitle, loadingText, formHint } = contactContent;
+// 若 site.googleFormUrl 有填，會直接嵌入 Google 表單；否則顯示表格式詢問表單樣式 + 聯絡方式。
+const hasForm = site.googleFormUrl.trim().length > 0;
+---
+
+<BaseLayout title={intro.heading}>
+  <section class="page-intro">
+    <p class="eyebrow">{intro.eyebrow}</p>
+    <h2>{intro.heading}</h2>
+    <div class="line"></div>
+    <p class="muted">{intro.subheading}</p>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container container-narrow">
+      {hasForm ? (
+        <div class="form-embed">
+          <iframe
+            title={formTitle}
+            src={site.googleFormUrl}
+            width="100%"
+            height="900"
+            frameborder="0"
+            loading="lazy"
+          >{loadingText}</iframe>
+        </div>
+      ) : (
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <div class="info-row"><span>{infoLabels.line}</span><a href={site.lineUrl} target="_blank" rel="noopener">{site.lineId}</a></div>
+            <div class="info-row"><span>{infoLabels.instagram}</span><a href={site.instagram} target="_blank" rel="noopener">{instagramText}</a></div>
+            <div class="info-row"><span>{infoLabels.facebook}</span><a href={site.facebook} target="_blank" rel="noopener">{facebookText}</a></div>
+            <div class="info-row"><span>{infoLabels.address}</span><span>{site.address}</span></div>
+          </div>
+
+          <a href={site.lineUrl} target="_blank" rel="noopener" class="btn contact-btn">{buttonText}</a>
+
+          <p class="muted form-hint">{formHint}</p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-wrap {
+    max-width: 630px;
+    margin: 0 auto;
+    padding: 3rem;
+    border-top: 1px solid var(--color-muted);
+    border-bottom: 1px solid var(--color-muted);
+  }
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    line-height: 3.6;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row span:first-child {
+    width: 90px;
+    text-align: right;
+    letter-spacing: 3px;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+  .info-row a:hover { text-decoration: underline; }
+  .contact-btn { display: block; text-align: center; margin-top: 2.5rem; }
+  .form-hint { margin-top: 2.5rem; font-size: 0.8rem; line-height: 2; }
+  .form-hint code { background: #f3f3f3; padding: 0.1em 0.4em; font-size: 0.9em; }
+  .form-embed { line-height: 0; }
+
+  @media (max-width: 600px) {
+    .contact-wrap { padding: 2rem 1.2rem; }
+    .info-row span:first-child { width: 70px; }
+  }
+</style>

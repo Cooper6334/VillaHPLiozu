@@ -1,0 +1,83 @@
+---
+import { getLang, languages } from '../data/content';
+
+const current = getLang(Astro.currentLocale);
+
+// 取得目前頁面去掉 /en 前綴後的基底路徑，再組出各語言對應網址
+const base = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+const urlFor = (code: string) =>
+  code === 'zh' ? base : base === '/' ? '/en/' : '/en' + base;
+
+const currentLabel = languages.find((l) => l.code === current)?.label;
+---
+
+<details class="lang">
+  <summary aria-label="Language">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"></path>
+    </svg>
+    <span>{currentLabel}</span>
+    <i class="caret">▾</i>
+  </summary>
+  <ul>
+    {languages.map((l) => (
+      <li>
+        <a href={urlFor(l.code)} class:list={['lang-item', { active: l.code === current }]}>{l.label}</a>
+      </li>
+    ))}
+  </ul>
+</details>
+
+<style>
+  .lang { position: relative; }
+  .lang summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--color-line);
+    color: var(--color-text);
+    user-select: none;
+  }
+  .lang summary::-webkit-details-marker { display: none; }
+  .lang summary:hover { border-color: var(--color-dark); }
+  .caret { font-style: normal; font-size: 0.7rem; }
+
+  .lang ul {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 60;
+    margin: 0;
+    padding: 0.3rem 0;
+    list-style: none;
+    background: #fff;
+    border: 1px solid var(--color-line);
+    min-width: 120px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+  .lang-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--color-text);
+    transition: background 0.2s;
+  }
+  .lang-item:hover { background: var(--color-bg); }
+  .lang-item.active { font-weight: 700; }
+</style>
+
+<script>
+  // 點選單外面時自動收合
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll<HTMLDetailsElement>('details.lang[open]').forEach((d) => {
+      if (!d.contains(e.target as Node)) d.removeAttribute('open');
+    });
+  });
+</script>

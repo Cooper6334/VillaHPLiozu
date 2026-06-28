@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getContent } from '../data/content';
+
+const c = getContent(Astro.currentLocale);
+const { site, ui } = c;
+const locationContent = c.location;
+const { intro, address, access } = locationContent;
+---
+
+<BaseLayout title={intro.heading}>
+  <section class="page-intro">
+    <p class="eyebrow">{intro.eyebrow}</p>
+    <h2>{intro.heading}</h2>
+    <div class="line"></div>
+    <p class="muted">{intro.subheading}</p>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="map-wrap">
+        <iframe
+          title={ui.mapTitle}
+          src={site.mapEmbed}
+          width="100%"
+          height="440"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="loc-grid">
+        <div class="loc-col">
+          <p class="eyebrow">{address.eyebrow}</p>
+          <h3>{address.heading}</h3>
+          <p>{site.address}</p>
+        </div>
+        <div class="loc-col">
+          <p class="eyebrow">{access.eyebrow}</p>
+          <h3>{access.heading}</h3>
+          {access.items.map((item) => (
+            <p><strong>{item.label}{ui.labelSeparator}</strong>{item.text}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .map-wrap { line-height: 0; border: 1px solid var(--color-line); margin-bottom: 3.5rem; }
+  .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .loc-col { border-top: 1px solid var(--color-dark); padding-top: 1.5rem; }
+  .loc-col .eyebrow { display: block; margin-bottom: 0.4rem; }
+  .loc-col h3 { font-size: 1.2rem; letter-spacing: 4px; margin-bottom: 1rem; }
+  .loc-col p { font-size: 0.9rem; line-height: 2; }
+  .loc-col a:hover { text-decoration: underline; }
+
+  @media (max-width: 820px) {
+    .loc-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+</style>

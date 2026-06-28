@@ -1,0 +1,232 @@
+{
+  "_note": "English content. Edit text here; keep the same structure as content.zh.json. Image paths and URLs are shared with the Chinese version.",
+
+  "site": {
+    "name": "Liozu Villa",
+    "logo": "/images/logo.png",
+    "slogan": "A Private Garden Villa · Slow Down and Unwind",
+    "description": "Rice fields sway in the breeze beneath blue skies and white clouds — a rare sense of calm and ease. Come let nature recharge you.",
+    "lineId": "@liozu.stay",
+    "lineUrl": "https://line.me/ti/p/@liozu.stay",
+    "lineQr": "/images/line-qr.png",
+    "facebook": "https://www.facebook.com/liozu.stay/",
+    "instagram": "https://www.instagram.com/liozu.stay/",
+    "address": "No. 6, Ln. 189, Sec. 2, Dongshan Rd., Dongshan Township, Yilan County, Taiwan",
+    "license": "B&B License No. 2560",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
+    "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
+    "googleFormUrl": ""
+  },
+
+  "nav": [
+    { "href": "/", "label": "About" },
+    { "href": "/rooms", "label": "Facilities" },
+    { "href": "/booking", "label": "Reservation" },
+    { "href": "/location", "label": "Location" },
+    { "href": "/contact", "label": "Contact" }
+  ],
+
+  "ui": {
+    "bookingButton": "Book Now",
+    "copyright": "© {year} {name}. All rights reserved.",
+    "menuToggle": "Open menu",
+    "socialLabel": "Social links",
+    "goTopLabel": "Back to top",
+    "heroLabel": "Hero carousel",
+    "prevLabel": "Previous",
+    "nextLabel": "Next",
+    "slideLabel": "Slide {n}",
+    "mapTitle": "Location map",
+    "instagramText": "Instagram",
+    "facebookText": "Facebook",
+    "lineShort": "LINE",
+    "facebookShort": "FB",
+    "instagramShort": "IG",
+    "titleSeparator": " | ",
+    "separator": "·",
+    "labelSeparator": ": ",
+    "featureSeparator": " · ",
+    "prevIcon": "‹",
+    "nextIcon": "›",
+    "goTopIcon": "↑"
+  },
+
+  "home": {
+    "hero": [
+      { "image": "/images/house.jpg", "caption": "The villa" },
+      { "image": "/images/pool.jpg", "caption": "Swimming pool" },
+      { "image": "/images/livingroom_1.jpg", "caption": "Living room" }
+    ],
+    "intro": {
+      "eyebrow": "WELCOME",
+      "heading": "A Private Garden Villa",
+      "subheading": "Liozu Villa",
+      "text": "Nestled among the mountains, this private garden villa offers four-season views from its glass house and outdoor barbecue gatherings — a getaway far from the hustle and bustle."
+    },
+    "features": [
+      { "icon": "🏡", "title": "Private Garden", "text": "A standalone villa with its own private garden." },
+      { "icon": "🌿", "title": "Glass House Views", "text": "Enjoy four-season scenery, surrounded by nature." },
+      { "icon": "🔥", "title": "Outdoor BBQ", "text": "An outdoor barbecue area for gatherings with friends and family." }
+    ],
+    "about": {
+      "eyebrow": "ABOUT US",
+      "heading": "About Us",
+      "image": "/images/about.jpg",
+      "imageLabel": "ABOUT",
+      "paragraphs": [
+        "Nestled among the mountains, this private garden villa offers four-season views from its glass house and outdoor barbecue gatherings — a getaway far from the hustle and bustle.",
+        "This is placeholder text — add the villa's story, philosophy, and nearby attractions here."
+      ],
+      "buttonText": "Directions & Location",
+      "buttonHref": "/location"
+    },
+    "map": {
+      "eyebrow": "ACCESS",
+      "heading": "Location",
+      "note": "Feel free to reach us on LINE or Instagram for detailed directions.",
+      "buttonText": "More on getting here",
+      "labels": {
+        "address": "Address",
+        "instagram": "IG",
+        "line": "LINE",
+        "license": "License"
+      }
+    }
+  },
+
+  "rooms": {
+    "intro": {
+      "eyebrow": "FACILITIES",
+      "heading": "Facilities",
+      "subheading": "Whole-house rental · Rooms and shared facilities"
+    },
+    "sectionEyebrow": "ROOMS",
+    "sectionTitle": "Room Types",
+    "summary": {
+      "heading": "Whole-House Rental",
+      "items": [
+        { "label": "Rental", "value": "Whole-house booking only; individual rooms are not rented separately." },
+        { "label": "Rooms", "value": "Type 1 large rooms × 3, Type 2 standard rooms × 4, 7 rooms in total." },
+        { "label": "Capacity", "value": "Up to 20 guests (Type 1 with sofa bed 3–4 ppl/room, Type 2 double 2 ppl/room)." },
+        { "label": "Bathroom", "value": "Rooms do not have private bathrooms; two shared bathrooms are available throughout the house." }
+      ]
+    },
+    "labels": {
+      "capacity": "Capacity",
+      "count": "Rooms",
+      "features": "Amenities"
+    },
+    "buttonText": "Inquire (Whole House)",
+    "itemEyebrow": "ROOM TYPE",
+    "note": "* This is a whole-house B&B; whole-house booking only. Individual rooms are not rented separately. Actual availability and rates are confirmed via LINE.",
+    "list": [
+      {
+        "name": "Type 1 ‧ Large Room",
+        "capacity": "3–4 guests",
+        "count": "3 rooms",
+        "description": "A spacious large room with a sofa bed, sleeping up to 4 — ideal for families or groups of friends.",
+        "features": ["Double bed", "Sofa bed", "Air conditioning", "Free Wi-Fi"],
+        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg"]
+      },
+      {
+        "name": "Type 2 ‧ Standard Room",
+        "capacity": "2 guests",
+        "count": "4 rooms",
+        "description": "A comfortable double room with air conditioning for a restful stay.",
+        "features": ["Double bed", "Air conditioning", "Free Wi-Fi"],
+        "images": ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg", "/images/room4.jpg"]
+      }
+    ]
+  },
+
+  "facilities": {
+    "eyebrow": "FACILITIES",
+    "heading": "Shared Facilities",
+    "list": [
+      {
+        "name": "Living Room (with Karaoke)",
+        "description": "A spacious living room with karaoke — sing your heart out and relax with friends and family.",
+        "images": ["/images/livingroom_1.jpg", "/images/livingroom_2.jpg"]
+      },
+      {
+        "name": "Kids' Play Area",
+        "description": "A dedicated play space where children can have fun while the grown-ups relax.",
+        "images": ["/images/childplace.jpg"]
+      },
+      {
+        "name": "Outdoor Pool",
+        "description": "An outdoor swimming pool — the perfect spot to cool off and play in summer.",
+        "images": ["/images/pool.jpg", "/images/pool_2.jpg", "/images/pool_3.jpg"]
+      },
+      {
+        "name": "Shared Bathrooms",
+        "description": "Two clean, well-kept shared bathrooms serve the whole house, convenient for all guests.",
+        "images": ["/images/bathroom1.jpg", "/images/bathroom2.jpg"]
+      }
+    ]
+  },
+
+  "booking": {
+    "intro": {
+      "eyebrow": "RESERVATION",
+      "heading": "Reservation",
+      "subheading": "How to book, check-in notes, and policies"
+    },
+    "methodTitle": "How to Book",
+    "qrAlt": "LINE add-friend QR code",
+    "steps": [
+      "Ask about availability via LINE",
+      "Confirm room type, dates, and number of guests",
+      "Pay the deposit as instructed to hold your booking",
+      "Receive booking confirmation — you're all set"
+    ],
+    "noticeTitle": "Check-in Notes",
+    "notes": [
+      { "label": "Check-in / out", "desc": "Check-in after 15:00, check-out before 11:00" },
+      { "label": "Smoking", "desc": "Non-smoking throughout; please smoke in designated areas" },
+      { "label": "Pets", "desc": "Pets are not allowed (please ask in advance if needed)" },
+      { "label": "Cancellation", "desc": "Cancellation and date changes follow the policy provided at booking" }
+    ],
+    "disclaimer": "* The above is for reference; official terms follow the B&B's announcements."
+  },
+
+  "location": {
+    "intro": {
+      "eyebrow": "LOCATION",
+      "heading": "Location",
+      "subheading": "Directions and map"
+    },
+    "address": {
+      "eyebrow": "ADDRESS",
+      "heading": "Address"
+    },
+    "access": {
+      "eyebrow": "ACCESS",
+      "heading": "Getting Here",
+      "items": [
+        { "label": "By car", "text": "Search the villa name in your navigation app; parking is available on site." },
+        { "label": "Public transit", "text": "(Add the nearest station and shuttle/taxi details here.)" }
+      ]
+    }
+  },
+
+  "contact": {
+    "intro": {
+      "eyebrow": "CONTACT",
+      "heading": "Contact Us",
+      "subheading": "Have a question? We'd love to hear from you."
+    },
+    "buttonText": "Ask via LINE",
+    "infoLabels": {
+      "instagram": "Instagram",
+      "line": "LINE",
+      "facebook": "Facebook",
+      "address": "Address"
+    },
+    "facebookText": "Page",
+    "instagramText": "Instagram",
+    "formTitle": "Online inquiry form",
+    "loadingText": "Loading…",
+    "formHint": "Prefer an online form? Create a Google Form and paste its embed URL into site.googleFormUrl in content, and the embedded form will appear here."
+  }
+}

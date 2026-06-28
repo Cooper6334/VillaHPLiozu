@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getContent, localePath } from '../data/content';
+
+const lang = Astro.currentLocale;
+const { home, site, ui } = getContent(lang);
+const { hero, intro, features, about, map } = home;
+---
+
+<BaseLayout>
+  <!-- ===== Hero 滿版輪播 ===== -->
+  <section class="hero" aria-label={ui.heroLabel}>
+    <div class="slides">
+      {hero.map((slide, i) => (
+        <div class:list={['slide', { active: i === 0 }]} data-slide={i}>
+          <img src={slide.image} alt={slide.caption} />
+        </div>
+      ))}
+    </div>
+    <button class="hero-arrow prev" aria-label={ui.prevLabel}>{ui.prevIcon}</button>
+    <button class="hero-arrow next" aria-label={ui.nextLabel}>{ui.nextIcon}</button>
+    <div class="hero-dots">
+      {hero.map((_, i) => <button class:list={['dot', { active: i === 0 }]} data-dot={i} aria-label={ui.slideLabel.replace('{n}', String(i + 1))}></button>)}
+    </div>
+  </section>
+
+  <!-- ===== topInfo 白色區塊（上移蓋住 hero）===== -->
+  <section class="top-info">
+    <p class="eyebrow">{intro.eyebrow}</p>
+    <h2>{intro.heading}</h2>
+    <div class="h1-box"><h1>{intro.subheading}</h1></div>
+    <p class="top-info-text">{intro.text}</p>
+  </section>
+
+  <!-- ===== 特色 ===== -->
+  <section class="section features">
+    <div class="container">
+      <div class="features-grid">
+        {features.map((f) => (
+          <div class="feature">
+            <span class="feature-icon">{f.icon}</span>
+            <h3>{f.title}</h3>
+            <p class="muted">{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 關於我們（圖文重疊）===== -->
+  <section class="about-section">
+    <div class="container about-box">
+      <div class="about-img placeholder"><span>{about.imageLabel}</span></div>
+      <div class="about-text">
+        <p class="eyebrow">{about.eyebrow}</p>
+        <h2>{about.heading}</h2>
+        {about.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 地圖 + 民宿資訊 ===== -->
+  <section class="section map-section">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">{map.eyebrow}</p>
+        <h2>{map.heading}</h2>
+        <div class="line"></div>
+      </div>
+      <div class="map-grid">
+        <div class="map-frame">
+          <iframe
+            title={ui.mapTitle}
+            src={site.mapEmbed}
+            width="100%"
+            height="100%"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="map-info">
+          <h3>{site.name}</h3>
+          <dl class="info-list">
+            <div class="info-row"><dt>{map.labels.address}</dt><dd>{site.address}</dd></div>
+            <div class="info-row"><dt>{map.labels.line}</dt><dd><a href={site.lineUrl} target="_blank" rel="noopener">{site.lineId}</a></dd></div>
+            <div class="info-row"><dt>{map.labels.license}</dt><dd>{site.license}</dd></div>
+          </dl>
+          <p class="map-note muted">{map.note}</p>
+          <a href={localePath(lang, '/location')} class="btn">{map.buttonText}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero { position: relative; height: min(78vh, 720px); overflow: hidden; }
+  .slides, .slide { position: absolute; inset: 0; }
+  .slide { opacity: 0; transition: opacity 0.9s ease; }
+  .slide.active { opacity: 1; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 3; background: transparent; color: #fff; mix-blend-mode: difference;
+    border: none; font-size: 3rem; width: 56px; height: 56px; cursor: pointer;
+  }
+  .hero-arrow.prev { left: 1rem; }
+  .hero-arrow.next { right: 1rem; }
+  .hero-dots { position: absolute; bottom: 4.5rem; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; gap: 0.6rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #fff; background: transparent; cursor: pointer; }
+  .dot.active { background: #fff; }
+
+  /* topInfo */
+  .top-info {
+    width: min(1050px, 92%);
+    background: #fff;
+    margin: -90px auto 0;
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    padding: 4rem 1.5rem 1rem;
+  }
+  .top-info h2 { font-style: italic; font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: 5px; margin: 0.5rem 0; }
+  .top-info .h1-box h1 { font-size: 1.1rem; letter-spacing: 4px; color: var(--color-muted); }
+  .top-info-text {
+    max-width: 650px; margin: 2rem auto 0;
+    text-align: left; line-height: 2.2; font-size: 0.95rem; color: #444;
+  }
+
+  /* 特色 */
+  .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
+  .feature { text-align: center; }
+  .feature-icon { font-size: 2.2rem; }
+  .feature h3 { font-size: 1.05rem; letter-spacing: 3px; margin: 0.8rem 0 0.4rem; }
+  .feature p { font-size: 0.85rem; }
+
+  /* 關於（圖文重疊）*/
+  .about-section { padding-block: clamp(3rem, 7vw, 6rem); }
+  .about-box { position: relative; }
+  .about-img { width: min(750px, 100%); height: 500px; }
+  .about-text {
+    background: #fff;
+    padding: 3rem;
+    border: 1px solid var(--color-line);
+  }
+  .about-text .eyebrow { display: block; margin-bottom: 0.5rem; }
+  .about-text h2 { font-size: 1.6rem; letter-spacing: 4px; }
+  .about-text code { background: #f3f3f3; padding: 0.1em 0.4em; font-size: 0.85em; }
+  .about-text .btn { margin-top: 1rem; }
+
+  @media (min-width: 901px) {
+    .about-box { min-height: 560px; }
+    .about-text {
+      position: absolute;
+      top: 120px;
+      right: 0;
+      width: 560px;
+    }
+  }
+  @media (max-width: 900px) {
+    .about-img { height: 320px; }
+    .about-text { margin-top: -40px; position: relative; width: 92%; margin-inline: auto; }
+  }
+
+  /* 地圖 + 資訊 */
+  .map-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 0; border: 1px solid var(--color-line); }
+  .map-frame { line-height: 0; min-height: 420px; }
+  .map-frame iframe { display: block; height: 100%; }
+  .map-info { padding: 3rem; border-left: 1px solid var(--color-line); }
+  .map-info h3 { font-size: 1.3rem; letter-spacing: 4px; margin-bottom: 1.5rem; }
+  .info-list { margin: 0 0 1.5rem; }
+  .info-row { display: flex; gap: 1.2rem; padding: 0.7rem 0; border-bottom: 1px solid var(--color-line); }
+  .info-row dt { min-width: 56px; color: var(--color-muted); letter-spacing: 3px; margin: 0; font-size: 0.85rem; }
+  .info-row dd { margin: 0; font-size: 0.9rem; }
+  .info-row a:hover { text-decoration: underline; }
+  .map-note { font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+  @media (max-width: 900px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .map-grid { grid-template-columns: 1fr; }
+    .map-frame { min-height: 320px; }
+    .map-info { border-left: none; border-top: 1px solid var(--color-line); padding: 2rem; }
+  }
+</style>
+
+<script>
+  // 原生 JS 輪播（自動播放 + 箭頭 + 圓點），不需要 jQuery
+  const slides = Array.from(document.querySelectorAll<HTMLElement>('.slide'));
+  const dots = Array.from(document.querySelectorAll<HTMLElement>('.dot'));
+  let current = 0;
+  let timer: number;
+
+  function show(index: number) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  function next() { show(current + 1); }
+  function start() { timer = window.setInterval(next, 5000); }
+  function reset() { clearInterval(timer); start(); }
+
+  document.querySelector('.hero-arrow.next')?.addEventListener('click', () => { next(); reset(); });
+  document.querySelector('.hero-arrow.prev')?.addEventListener('click', () => { show(current - 1); reset(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); reset(); }));
+
+  if (slides.length > 1) start();
+</script>

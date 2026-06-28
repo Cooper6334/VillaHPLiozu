@@ -1,0 +1,73 @@
+---
+// 固定在畫面右側的社群 icon 按鈕 + 右下回頂端（參考站 sideSocial / goTop）
+import { getContent } from '../data/content';
+import Icon from './Icon.astro';
+const { site, ui } = getContent(Astro.currentLocale);
+---
+
+<div class="side-social" aria-label={ui.socialLabel}>
+  <a href={site.lineUrl} target="_blank" rel="noopener" aria-label={ui.lineShort}><Icon name="line" /></a>
+  <a href={site.facebook} target="_blank" rel="noopener" aria-label={ui.facebookText}><Icon name="facebook" /></a>
+  <a href={site.instagram} target="_blank" rel="noopener" aria-label={ui.instagramText}><Icon name="instagram" /></a>
+</div>
+
+<button class="go-top" aria-label={ui.goTopLabel}>{ui.goTopIcon}</button>
+
+<style>
+  .side-social {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+  }
+  .side-social a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    transition: background 0.3s;
+  }
+  .side-social a:last-child { border-bottom: none; }
+  .side-social a:hover { background: #555; }
+  .side-social :global(svg) { width: 20px; height: 20px; }
+
+  .go-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 40;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, background 0.3s, color 0.3s;
+  }
+  .go-top.show { opacity: 1; pointer-events: auto; }
+  .go-top:hover { background: #000; color: #fff; }
+
+  @media (max-width: 820px) {
+    .side-social a { width: 40px; height: 40px; }
+    .side-social :global(svg) { width: 18px; height: 18px; }
+  }
+</style>
+
+<script>
+  // 捲動超過一個畫面才顯示回頂端鈕
+  const goTop = document.querySelector<HTMLButtonElement>('.go-top');
+  window.addEventListener('scroll', () => {
+    goTop?.classList.toggle('show', window.scrollY > 500);
+  });
+  goTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>

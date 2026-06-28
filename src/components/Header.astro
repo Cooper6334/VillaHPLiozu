@@ -1,0 +1,134 @@
+---
+import { getContent, localePath } from '../data/content';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = Astro.currentLocale;
+const { site, nav, ui } = getContent(lang);
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => {
+  const target = localePath(lang, href);
+  return href === '/' ? path === target : path.startsWith(target);
+};
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={localePath(lang, '/')} class="brand" aria-label={site.name}>
+      <img src={site.logo} alt={site.name} class="brand-logo" />
+    </a>
+
+    <nav class="site-nav">
+      {nav.map((item) => (
+        <a href={localePath(lang, item.href)} class:list={['nav-link', { active: isActive(item.href) }]}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-right">
+      <LanguageSwitcher />
+      <a href={localePath(lang, '/booking')} class="header-booking">{ui.bookingButton}</a>
+      <button class="nav-toggle" aria-label={ui.menuToggle} aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 76px;
+    gap: 1rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+  }
+  .brand-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+  @media (max-width: 480px) {
+    .brand-logo { height: 38px; }
+  }
+  .site-nav { display: flex; gap: 1.6rem; }
+  .nav-link {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--color-text);
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .nav-link:hover { border-color: var(--color-dark); }
+  .nav-link.active { border-color: var(--color-dark); }
+
+  .header-right { display: flex; align-items: center; gap: 1rem; }
+  .header-booking {
+    border: 1px solid var(--color-dark);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .header-booking:hover { background: var(--color-dark); color: #fff; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .nav-toggle span { width: 26px; height: 1px; background: var(--color-dark); transition: 0.25s; }
+
+  /* ===== 手機 ===== */
+  @media (max-width: 980px) {
+    .nav-toggle { display: flex; }
+    .header-booking { display: none; }
+    .site-nav {
+      position: absolute;
+      top: 76px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--color-line);
+      padding: 0 1.5rem 0.5rem;
+      transform: translateY(-150%);
+      transition: transform 0.3s ease;
+      z-index: 40;
+    }
+    .site-nav.open { transform: translateY(0); }
+    .nav-link {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--color-line);
+    }
+    .nav-link.active { border-color: var(--color-line); font-weight: 700; }
+  }
+</style>
+
+<script>
+  // 原生 JS 控制手機選單（不使用 jQuery）
+  const toggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    const open = navMenu?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

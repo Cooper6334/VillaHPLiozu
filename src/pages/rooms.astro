@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RoomGallery from '../components/RoomGallery.astro';
+import { getContent, localePath } from '../data/content';
+import type { Room, Facility } from '../data/content';
+
+const lang = Astro.currentLocale;
+const c = getContent(lang);
+const { ui } = c;
+const roomsContent = c.rooms;
+const rooms = roomsContent.list as Room[];
+const facilitiesContent = c.facilities;
+const facilities = facilitiesContent.list as Facility[];
+const { intro, summary, sectionEyebrow, sectionTitle, labels, buttonText, note, itemEyebrow } = roomsContent;
+---
+
+<BaseLayout title={intro.heading}>
+  <section class="page-intro">
+    <p class="eyebrow">{intro.eyebrow}</p>
+    <h2>{intro.heading}</h2>
+    <div class="line"></div>
+    <p class="muted">{intro.subheading}</p>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container container-narrow">
+      <div class="summary">
+        <div class="summary-title">{summary.heading}</div>
+        <dl class="summary-list">
+          {summary.items.map((item) => (
+            <div class="summary-row"><dt>{item.label}</dt><dd>{item.value}</dd></div>
+          ))}
+        </dl>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">{sectionEyebrow}</p>
+        <h2>{sectionTitle}</h2>
+        <div class="line"></div>
+      </div>
+
+      {rooms.map((room, i) => (
+        <article class:list={['room', { reverse: i % 2 === 1 }]}>
+          <div class="room-media"><RoomGallery images={room.images} alt={room.name} /></div>
+          <div class="room-info">
+            <p class="eyebrow">{itemEyebrow} 0{i + 1}</p>
+            <h3>{room.name}</h3>
+            <p class="room-intro">{room.description}</p>
+            <div class="room-detail">
+              <div class="detail-row"><span>{labels.capacity}</span><span>{room.capacity}</span></div>
+              <div class="detail-row"><span>{labels.count}</span><span>{room.count}</span></div>
+              <div class="detail-row"><span>{labels.features}</span><span>{room.features.join(ui.featureSeparator)}</span></div>
+            </div>
+            <a href={localePath(lang, '/contact')} class="btn">{buttonText}</a>
+          </div>
+        </article>
+      ))}
+
+      <p class="muted text-center note">{note}</p>
+
+      <div class="section-title facilities-title">
+        <p class="eyebrow">{facilitiesContent.eyebrow}</p>
+        <h2>{facilitiesContent.heading}</h2>
+        <div class="line"></div>
+      </div>
+
+      {facilities.map((f, i) => (
+        <article class:list={['room', { reverse: i % 2 === 1 }]}>
+          <div class="room-media"><RoomGallery images={f.images} alt={f.name} /></div>
+          <div class="room-info">
+            <h3>{f.name}</h3>
+            <p class="room-intro">{f.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* 包棟說明 */
+  .summary {
+    border-top: 1px solid var(--color-dark);
+    margin-bottom: 4.5rem;
+  }
+  .summary-title {
+    width: 180px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    letter-spacing: 6px;
+    border-bottom: 1px solid var(--color-dark);
+    margin-top: -1px;
+    font-family: var(--font-serif);
+  }
+  .summary-list { margin: 2rem 0 0.5rem; }
+  .summary-row {
+    display: flex;
+    gap: 2rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-row dt { min-width: 110px; margin: 0; color: var(--color-muted); letter-spacing: 3px; }
+  .summary-row dd { margin: 0; }
+
+  @media (max-width: 600px) {
+    .summary-row { flex-direction: column; gap: 0.3rem; }
+  }
+
+  .room {
+    display: grid;
+    grid-template-columns: 61.5% 1fr;
+    gap: 4%;
+    align-items: center;
+    margin-bottom: 5rem;
+  }
+  .room.reverse { grid-template-columns: 1fr 61.5%; }
+  .room.reverse .room-media { order: 2; }
+  .room-info h3 { font-size: 1.4rem; letter-spacing: 4px; margin: 0.3rem 0 1rem; }
+  .room-intro { font-size: 0.9rem; line-height: 2; color: #444; margin-bottom: 1.5rem; }
+  .room-detail {
+    border-top: 1px solid var(--color-dark);
+    border-bottom: 1px solid var(--color-dark);
+    padding: 1.2rem 0;
+    margin-bottom: 1.8rem;
+  }
+  .detail-row {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 0.4rem 0;
+  }
+  .detail-row span:first-child { min-width: 80px; color: var(--color-muted); letter-spacing: 3px; }
+  .note { margin-top: 4rem; }
+  .facilities-title { margin-top: 5.5rem; }
+
+  @media (max-width: 820px) {
+    .room { grid-template-columns: 1fr; gap: 1.5rem; }
+    .room.reverse .room-media { order: 0; }
+  }
+</style>

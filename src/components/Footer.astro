@@ -1,0 +1,62 @@
+---
+import { getContent, localePath } from '../data/content';
+import SocialIcons from './SocialIcons.astro';
+const lang = Astro.currentLocale;
+const { site, ui } = getContent(lang);
+const year = new Date().getFullYear();
+const copyright = ui.copyright.replace('{year}', String(year)).replace('{name}', site.name);
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href={localePath(lang, '/')} class="footer-brand">{site.name}</a>
+
+    <div class="footer-info">
+      <p>{site.address}</p>
+      <SocialIcons />
+      <p class="license">{site.license}</p>
+    </div>
+
+    <div class="footer-bottom">{copyright}</div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-dark);
+    margin-top: 5rem;
+    padding-block: 3.5rem;
+    text-align: center;
+  }
+  .footer-brand {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+  .footer-nav a {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--color-text);
+    transition: color 0.3s;
+  }
+  .footer-nav a:hover { color: var(--color-muted); }
+  .footer-info { font-size: 0.85rem; letter-spacing: 1px; line-height: 2; color: #555; }
+  .footer-info a:hover { text-decoration: underline; }
+  .footer-info .sep { color: var(--color-line); margin: 0 0.6rem; }
+  .license { color: var(--color-muted); }
+  .footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: var(--color-muted);
+  }
+</style>

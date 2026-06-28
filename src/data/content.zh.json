@@ -1,0 +1,231 @@
+{
+  "_說明": "全站文字與圖片都集中在這個檔。修改文字＝改這裡的字串；換圖片＝把照片放進 public/images/ 後改對應的 image 路徑。陣列項目（房型、特色、須知）可自由增減。",
+
+  "site": {
+    "name": "留佇包棟民宿",
+    "logo": "/images/logo.png",
+    "slogan": "獨棟庭園度假別墅 · 享受慢活時光",
+    "description": "隨風搖曳的稻田，在藍天白雲襯托下，有一種久違的寧靜與自在，歡迎你來，讓大自然替你充電𓂃 𓇬◌۫",
+    "lineId": "@liozu.stay",
+    "lineUrl": "https://line.me/ti/p/@liozu.stay",
+    "lineQr": "/images/line-qr.png",
+    "facebook": "https://www.facebook.com/liozu.stay/",
+    "instagram": "https://www.instagram.com/liozu.stay/",
+    "address": "台灣宜蘭縣冬山鄉太和村冬山路二段189巷6號",
+    "license": "民宿登記證編號：2560 號",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
+    "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
+    "googleFormUrl": ""
+  },
+
+  "nav": [
+    { "href": "/", "label": "關於我們" },
+    { "href": "/rooms", "label": "房間與設施" },
+    { "href": "/booking", "label": "訂房資訊" },
+    { "href": "/location", "label": "民宿位置" },
+    { "href": "/contact", "label": "聯絡我們" }
+  ],
+
+  "ui": {
+    "bookingButton": "立刻訂房",
+    "copyright": "© {year} {name}. All rights reserved.",
+    "menuToggle": "開啟選單",
+    "socialLabel": "社群連結",
+    "goTopLabel": "回到頂端",
+    "heroLabel": "主視覺輪播",
+    "prevLabel": "上一張",
+    "nextLabel": "下一張",
+    "slideLabel": "第 {n} 張",
+    "mapTitle": "民宿位置地圖",
+    "instagramText": "Instagram",
+    "facebookText": "Facebook",
+    "lineShort": "LINE",
+    "facebookShort": "FB",
+    "instagramShort": "IG",
+    "titleSeparator": "｜",
+    "separator": "·",
+    "labelSeparator": "：",
+    "featureSeparator": "、",
+    "prevIcon": "‹",
+    "nextIcon": "›",
+    "goTopIcon": "↑"
+  },
+
+  "home": {
+    "hero": [
+      { "image": "/images/house.jpg", "caption": "民宿外觀" },
+      { "image": "/images/pool.jpg", "caption": "戲水池" },
+      { "image": "/images/livingroom_1.jpg", "caption": "客廳空間" }
+    ],
+    "intro": {
+      "eyebrow": "WELCOME",
+      "heading": "獨棟庭園度假別墅",
+      "subheading": "留佇包棟民宿",
+      "text": "坐落於山林間的獨棟庭園民宿，玻璃屋賞四季美景、戶外烤肉歡聚，給你一個遠離塵囂的度假天地。"
+    },
+    "features": [ { "icon": "🏡", "title": "獨棟庭園", "text": "獨棟度假別墅，擁有專屬庭園空間。" },
+      { "icon": "🌿", "title": "玻璃屋景觀", "text": "玻璃屋賞四季美景，被自然環繞。" },
+      { "icon": "🔥", "title": "戶外烤肉", "text": "戶外烤肉區，與親友歡聚同樂。" }
+    ],
+    "about": {
+      "eyebrow": "ABOUT US",
+      "heading": "關於我們",
+      "image": "/images/about.jpg",
+      "imageLabel": "ABOUT",
+      "paragraphs": [
+        "坐落於山林間的獨棟庭園民宿，玻璃屋賞四季美景、戶外烤肉歡聚，給你一個遠離塵囂的度假天地。",
+        "這裡是文案佔位區，可放民宿的故事、經營理念與周邊景點介紹。"
+      ],
+      "buttonText": "交通與位置",
+      "buttonHref": "/location"
+    },
+    "map": {
+      "eyebrow": "ACCESS",
+      "heading": "交通位置",
+      "note": "歡迎加 LINE 或 Instagram 洽詢詳細交通方式",
+      "buttonText": "更多交通資訊",
+      "labels": {
+        "address": "地址",
+        "instagram": "IG",
+        "line": "LINE",
+        "license": "編號"
+      }
+    }
+  },
+
+  "rooms": {
+    "intro": {
+      "eyebrow": "FACILITIES",
+      "heading": "民宿介紹",
+      "subheading": "獨棟包棟・房型與公共設施一覽"
+    },
+    "sectionEyebrow": "ROOMS",
+    "sectionTitle": "房型",
+    "summary": {
+      "heading": "包棟說明",
+      "items": [
+        { "label": "出租方式", "value": "僅接受整棟包棟，恕不單獨出租房間" },
+        { "label": "房型", "value": "<房型 1> 大房間 3 間 <房型 2> 一般房 4 間" },
+        { "label": "可住人數", "value": "最多可住 20 人（房型 1 含沙發床 3–4 人／間、房型 2 雙人 2 人／間）" },
+        { "label": "衛浴", "value": "房間無獨立衛浴，全館提供 2 間共用衛浴" }
+      ]
+    },
+    "labels": {
+      "capacity": "入住人數",
+      "count": "房間數",
+      "features": "房間設備"
+    },
+    "buttonText": "包棟詢問",
+    "itemEyebrow": "ROOM TYPE",
+    "note": "※ 本民宿為包棟民宿，僅接受整棟預訂，恕不單獨出租單一房間。實際房況與費用以 LINE 洽詢為準。",
+    "list": [
+      {
+        "name": "房型 1 ‧ 大房間",
+        "capacity": "3–4 人",
+        "count": "3 間",
+        "description": "寬敞的大房間，附沙發床，最多可入住 4 人，適合家庭或好友同行。",
+        "features": ["雙人床", "沙發床", "冷氣空調", "免費 Wi-Fi"],
+        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg"]
+      },
+      {
+        "name": "房型 2 ‧ 一般房間",
+        "capacity": "2 人",
+        "count": "4 間",
+        "description": "舒適的雙人房型，備有空調，給你安穩好眠。",
+        "features": ["雙人床", "冷氣空調", "免費 Wi-Fi"],
+        "images": ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg", "/images/room4.jpg"]
+      }
+    ]
+  },
+
+  "facilities": {
+    "eyebrow": "FACILITIES",
+    "heading": "公共設施",
+    "list": [
+      {
+        "name": "客廳（含卡拉 OK）",
+        "description": "寬敞的客廳空間，附卡拉 OK 設備，與親友盡情歡唱、放鬆談天。",
+        "images": ["/images/livingroom_1.jpg", "/images/livingroom_2.jpg"]
+      },
+      {
+        "name": "兒童遊戲區",
+        "description": "專屬兒童遊戲空間，讓小朋友盡情玩樂，大人也能安心休息。",
+        "images": ["/images/childplace.jpg"]
+      },
+      {
+        "name": "戶外泳池",
+        "description": "戶外戲水泳池，夏日消暑、親子戲水的最佳去處。",
+        "images": ["/images/pool.jpg", "/images/pool_2.jpg", "/images/pool_3.jpg"]
+      },
+      {
+        "name": "共用衛浴",
+        "description": "房間採共用衛浴設計，全館共 2 間共用衛浴，乾淨整潔，方便整棟賓客使用。",
+        "images": ["/images/bathroom1.jpg", "/images/bathroom2.jpg"]
+      }
+    ]
+  },
+
+  "booking": {
+    "intro": {
+      "eyebrow": "RESERVATION",
+      "heading": "訂房資訊",
+      "subheading": "訂房方式、入住須知與注意事項"
+    },
+    "methodTitle": "訂房方式",
+    "qrAlt": "LINE 加好友 QR code",
+    "steps": [
+      "透過 LINE 詢問空房",
+      "確認房型、入住日期與人數",
+      "依指示完成訂金匯款以保留房間",
+      "收到訂房確認，即完成預訂"
+    ],
+    "noticeTitle": "入住須知",
+    "notes": [
+      { "label": "入住 / 退房", "desc": "入住 15:00 後，退房 11:00 前" },
+      { "label": "吸菸規定", "desc": "全館禁菸，吸菸請至指定區域" },
+      { "label": "寵物", "desc": "恕不接受寵物入住（如有需求請先洽詢）" },
+      { "label": "退訂", "desc": "退訂與改期請參考訂房時提供之規定" }
+    ],
+    "disclaimer": "※ 以上為示意內容，正式條款請依民宿公告為準。"
+  },
+
+  "location": {
+    "intro": {
+      "eyebrow": "LOCATION",
+      "heading": "民宿位置",
+      "subheading": "交通方式與地圖導覽"
+    },
+    "address": {
+      "eyebrow": "ADDRESS",
+      "heading": "地址"
+    },
+    "access": {
+      "eyebrow": "ACCESS",
+      "heading": "交通方式",
+      "items": [
+        { "label": "自行開車", "text": "導航搜尋民宿名稱即可抵達，備有停車位。" },
+        { "label": "大眾運輸", "text": "（此處填寫最近車站與接駁／計程車說明）" }
+      ]
+    }
+  },
+
+  "contact": {
+    "intro": {
+      "eyebrow": "CONTACT",
+      "heading": "線上詢問",
+      "subheading": "有任何問題，歡迎與我們聯繫"
+    },
+    "buttonText": "用 LINE 詢問",
+    "infoLabels": {
+      "instagram": "Instagram",
+      "line": "LINE",
+      "facebook": "Facebook",
+      "address": "地址"
+    },
+    "facebookText": "粉絲專頁",
+    "instagramText": "Instagram",
+    "formTitle": "線上詢問表單",
+    "loadingText": "載入中…",
+    "formHint": "想改用線上表單？建立一份 Google 表單後，把嵌入網址填入 content.json 的 site.googleFormUrl，這裡就會自動顯示嵌入式表單。"
+  }
+}
