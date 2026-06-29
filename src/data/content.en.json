@@ -68,7 +68,11 @@
       { "icon": "🏡", "title": "Whole House", "text": "Book all 7 rooms for full privacy and ease." },
       { "icon": "🌾", "title": "Countryside", "text": "Surrounded by the rice fields of Dongshan, Yilan." },
       { "icon": "🎉", "title": "Entertainment", "text": "Karaoke, mahjong, splash pool and outdoor BBQ." },
-      { "icon": "🐾", "title": "Pet Friendly", "text": "Bring your furry friends along for the stay." }
+      { "icon": "🐾", "title": "Pet Friendly", "text": "Bring your furry friends along for the stay." },
+      { "icon": "🛗", "title": "Elevator & Accessible", "text": "An elevator and accessible spaces make it easy for elderly guests." },
+      { "icon": "🍳", "title": "Self-catering Kitchen", "text": "A fully equipped kitchen for cooking your own meals." },
+      { "icon": "👨‍👩‍👧‍👦", "title": "Flexible Group Size", "text": "Book the whole house for 6–20 guests — gatherings or getaways." },
+      { "icon": "🚗", "title": "Easy to Reach", "text": "Close to the Luodong Interchange and Dongshan Station — easy by car or train." }
     ],
     "about": {
       "eyebrow": "ABOUT US",
@@ -109,8 +113,8 @@
       "heading": "Whole-House Rental",
       "items": [
         { "label": "Rental", "value": "Whole-house booking only; individual rooms are not rented separately." },
-        { "label": "Rooms", "value": ["7 double suites · sleeps 14 (base)", "Type 1 large rooms ×3 (with sofa bed), Type 2 standard rooms ×4"] },
-        { "label": "Capacity", "value": "The 3 sofa-bed rooms add up to 6 more guests; recommended maximum 18 adults to ensure a comfortable stay." },
+        { "label": "Rooms", "value": ["Double Room ×4, 1 standard double bed", "Quad Room ×3, 1 standard double bed + 1 standard sofa bed"] },
+        { "label": "Capacity", "value": "6–20 guests (Double Room 2/room, Quad Room 4/room)." },
         { "label": "Bathroom", "value": "Every room has its own private bathroom." }
       ]
     },
@@ -124,20 +128,20 @@
     "note": "* This is a whole-house B&B; whole-house booking only. Individual rooms are not rented separately. Actual availability and rates are confirmed via LINE.",
     "list": [
       {
-        "name": "Type 1 ‧ Large Room",
-        "capacity": "2–4 guests",
-        "count": "3 rooms",
-        "description": "A spacious large room with a sofa bed and a private bathroom, sleeping up to 4 — ideal for families with children.",
-        "features": ["Double bed", "Sofa bed", "Private bathroom", "Air conditioning", "Free Wi-Fi", "TV"],
-        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg", "/images/bathroom1.jpg"]
-      },
-      {
-        "name": "Type 2 ‧ Standard Room",
+        "name": "Double Room",
         "capacity": "2 guests",
         "count": "4 rooms",
-        "description": "A comfortable double room with a private bathroom and air conditioning for a restful stay.",
-        "features": ["Double bed", "Private bathroom", "Air conditioning", "Free Wi-Fi", "TV"],
+        "description": "A comfortable double room with 1 standard double bed, a private bathroom and air conditioning for a restful stay.",
+        "features": ["Standard double bed", "Private bathroom", "Air conditioning", "Free Wi-Fi", "TV"],
         "images": ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg", "/images/room4.jpg", "/images/bathroom2.jpg"]
+      },
+      {
+        "name": "Quad Room",
+        "capacity": "4 guests",
+        "count": "3 rooms",
+        "description": "A spacious room with 1 standard double bed and 1 standard sofa bed, sleeping up to 4 — ideal for families with children.",
+        "features": ["Standard double bed", "Standard sofa bed", "Private bathroom", "Air conditioning", "Free Wi-Fi", "TV"],
+        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg", "/images/bathroom1.jpg"]
       }
     ]
   },
@@ -186,12 +190,11 @@
       "Ask about availability and pricing via LINE",
       "Pay a 50% deposit to confirm your booking (deposit is non-refundable)",
       "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool / barbecue fees (if applicable)",
-      "After check-out, once the property is confirmed undamaged, the security deposit is fully refunded"
+      "After check-out, once the property is confirmed undamaged, the security deposit is refunded in full within N days"
     ],
     "noticeTitle": "Check-in Notes",
     "notes": [
       { "label": "Check-in / out", "desc": "Check-in after 15:00, check-out before 11:00." },
-      { "label": "Deposit", "desc": "A 50% deposit is required at booking. The deposit is non-refundable." },
       { "label": "Date changes", "desc": "If your plans change, please notify us at least 7 days before check-in (or earlier). The deposit may be carried over once; late notice or more than one change forfeits the deposit with no extension." },
       { "label": "Balance & security deposit", "desc": "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool / barbecue cleaning fees. The deposit is fully refunded after check-out if the property is undamaged." },
       { "label": "Splash pool", "desc": "Use of the splash pool costs an extra NT$1,500. Please walk slowly and watch your step around the pool; children must be supervised by an adult at all times." },
