@@ -201,6 +201,16 @@
     },
     "methodTitle": "How to Book",
     "qrAlt": "LINE add-friend QR code",
+    "availability": {
+      "heading": "Availability",
+      "subheading": "Grey dates are booked. Actual availability and rates are confirmed via LINE.",
+      "available": "Open",
+      "booked": "Booked",
+      "loading": "Loading availability…",
+      "error": "Couldn't load availability right now — please ask via LINE.",
+      "prev": "Previous month",
+      "next": "Next month"
+    },
     "steps": [
       "Ask about availability and pricing via LINE",
       "Pay a 50% deposit to confirm your booking (deposit is non-refundable)",

@@ -201,6 +201,16 @@
     },
     "methodTitle": "訂房方式",
     "qrAlt": "LINE 加好友 QR code",
+    "availability": {
+      "heading": "空房月曆",
+      "subheading": "灰色為已訂；實際空房與報價以 LINE 確認為準。",
+      "available": "可訂",
+      "booked": "已訂",
+      "loading": "載入空房中…",
+      "error": "暫時無法載入空房資訊，請改用 LINE 詢問。",
+      "prev": "上個月",
+      "next": "下個月"
+    },
     "steps": [
       "透過 LINE 詢問空房與報價",
       "預訂時先匯 50% 訂金（訂金恕不退款），完成預訂",

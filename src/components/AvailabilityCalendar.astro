@@ -1,0 +1,177 @@
+---
+// 空房月曆：前端即時向 /api/availability 取得已訂日期，畫出月曆（可訂 / 已訂）。
+// 資料來源見 functions/api/availability.js。需在 Cloudflare 設定 ICAL_URL 環境變數。
+import { getContent, getLang } from '../data/content';
+
+const lang = Astro.currentLocale;
+const a = getContent(lang).booking.availability;
+const locale = getLang(lang) === 'en' ? 'en' : 'zh-TW';
+
+const labels = {
+  available: a.available,
+  booked: a.booked,
+  loading: a.loading,
+  error: a.error,
+};
+---
+
+<section class="avail" data-locale={locale} data-labels={JSON.stringify(labels)}>
+  <div class="avail-bar">
+    <button type="button" class="avail-nav avail-prev" aria-label={a.prev}>‹</button>
+    <span class="avail-title" aria-live="polite"></span>
+    <button type="button" class="avail-nav avail-next" aria-label={a.next}>›</button>
+  </div>
+
+  <div class="avail-grid" role="grid"></div>
+
+  <div class="avail-foot">
+    <div class="avail-legend">
+      <span class="legend-item"><i class="dot open"></i>{a.available}</span>
+      <span class="legend-item"><i class="dot booked"></i>{a.booked}</span>
+    </div>
+    <p class="avail-status" role="status"></p>
+  </div>
+</section>
+
+<style>
+  .avail { max-width: 460px; margin: 0 auto; }
+  .avail-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .avail-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+  }
+  .avail-nav {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: background 0.2s, color 0.2s;
+  }
+  .avail-nav:hover { background: var(--color-dark); color: #fff; border-color: var(--color-dark); }
+
+  .avail-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+  .avail-wd {
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    color: var(--color-muted);
+    padding-bottom: 0.3rem;
+  }
+  .avail-cell {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+    position: relative;
+  }
+  .avail-cell.empty { border: none; }
+  .avail-cell.open { border-color: var(--color-line); }
+  .avail-cell.past { color: #cfcabf; }
+  .avail-cell.booked {
+    background: #e7e3da;
+    color: #9a9486;
+    text-decoration: line-through;
+  }
+
+  .avail-foot {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .avail-legend { display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--color-muted); }
+  .legend-item { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .dot { width: 12px; height: 12px; display: inline-block; border: 1px solid var(--color-line); }
+  .dot.booked { background: #e7e3da; border-color: #e7e3da; }
+  .avail-status { font-size: 0.8rem; color: var(--color-muted); min-height: 1.2em; margin: 0; }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.avail');
+  if (root) {
+    const locale = root.dataset.locale || 'zh-TW';
+    const L = JSON.parse(root.dataset.labels || '{}');
+    const grid = root.querySelector<HTMLElement>('.avail-grid')!;
+    const titleEl = root.querySelector<HTMLElement>('.avail-title')!;
+    const statusEl = root.querySelector<HTMLElement>('.avail-status')!;
+
+    const monthFmt = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long' });
+    const wdFmt = new Intl.DateTimeFormat(locale, { weekday: 'short' });
+
+    const view = new Date();
+    view.setDate(1);
+    let booked = new Set<string>();
+    const todayISO = new Date().toISOString().slice(0, 10);
+
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    function render() {
+      titleEl.textContent = monthFmt.format(view);
+      grid.innerHTML = '';
+      // 星期標頭（以 2024-09-01 週日為基準）
+      for (let i = 0; i < 7; i++) {
+        const wd = document.createElement('div');
+        wd.className = 'avail-wd';
+        wd.textContent = wdFmt.format(new Date(2024, 8, 1 + i));
+        grid.appendChild(wd);
+      }
+      const year = view.getFullYear();
+      const month = view.getMonth();
+      const startPad = new Date(year, month, 1).getDay();
+      const days = new Date(year, month + 1, 0).getDate();
+      for (let i = 0; i < startPad; i++) {
+        const e = document.createElement('div');
+        e.className = 'avail-cell empty';
+        grid.appendChild(e);
+      }
+      for (let d = 1; d <= days; d++) {
+        const iso = `${year}-${pad(month + 1)}-${pad(d)}`;
+        const cell = document.createElement('div');
+        cell.className = 'avail-cell';
+        cell.textContent = String(d);
+        if (iso < todayISO) cell.classList.add('past');
+        else if (booked.has(iso)) { cell.classList.add('booked'); cell.title = L.booked; }
+        else { cell.classList.add('open'); cell.title = L.available; }
+        grid.appendChild(cell);
+      }
+    }
+
+    root.querySelector('.avail-prev')!.addEventListener('click', () => {
+      view.setMonth(view.getMonth() - 1);
+      render();
+    });
+    root.querySelector('.avail-next')!.addEventListener('click', () => {
+      view.setMonth(view.getMonth() + 1);
+      render();
+    });
+
+    render();
+    statusEl.textContent = L.loading;
+    fetch('/api/availability')
+      .then((r) => r.json())
+      .then((data) => {
+        booked = new Set(data.booked || []);
+        statusEl.textContent = '';
+        render();
+      })
+      .catch(() => {
+        statusEl.textContent = L.error;
+      });
+  }
+</script>
