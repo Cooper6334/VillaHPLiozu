@@ -50,7 +50,7 @@ const { hero, intro, features, about, map } = home;
   <!-- ===== 關於我們（圖文重疊）===== -->
   <section class="about-section">
     <div class="container about-box">
-      <div class="about-img placeholder"><span>{about.imageLabel}</span></div>
+      <div class="about-img"><img src={about.image} alt={about.heading} /></div>
       <div class="about-text">
         <p class="eyebrow">{about.eyebrow}</p>
         <h2>{about.heading}</h2>
@@ -141,6 +141,7 @@ const { hero, intro, features, about, map } = home;
   .about-section { padding-block: clamp(3rem, 7vw, 6rem); }
   .about-box { position: relative; }
   .about-img { width: min(750px, 100%); height: 500px; }
+  .about-img img { width: 100%; height: 100%; object-fit: cover; }
   .about-text {
     background: #fff;
     padding: 3rem;

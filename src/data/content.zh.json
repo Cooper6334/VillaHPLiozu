@@ -12,6 +12,7 @@
     "facebook": "https://www.facebook.com/liozu.stay/",
     "instagram": "https://www.instagram.com/liozu.stay/",
     "address": "台灣宜蘭縣冬山鄉太和村冬山路二段189巷6號",
+    "mapUrl": "https://maps.app.goo.gl/eoPHD1voLt734gLS9",
     "license": "民宿登記證編號：2560 號",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
     "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
@@ -53,29 +54,31 @@
 
   "home": {
     "hero": [
-      { "image": "/images/rocking-chair.jpg", "caption": "民宿外觀" },
+      { "image": "/images/roomlarge1.jpg", "caption": "民宿外觀" },
       { "image": "/images/pool_3.jpg", "caption": "戲水池" },
       { "image": "/images/livingroom_1.jpg", "caption": "客廳空間" }
     ],
     "intro": {
       "eyebrow": "WELCOME",
-      "heading": "獨棟庭園度假別墅",
-      "subheading": "留佇包棟民宿",
-      "text": "坐落於山林間的獨棟庭園民宿，玻璃屋賞四季美景、戶外烤肉歡聚，給你一個遠離塵囂的度假天地。"
+      "heading": "田園裡的獨棟包棟民宿",
+      "subheading": "留佇 · 宜蘭冬山",
+      "text": "隨風搖曳的稻田，在藍天白雲襯托下，有一種久違的寧靜與自在。留佇是一整棟專屬於你們的度假空間，最適合家庭與好友包棟同遊，讓大自然替你充電。"
     },
-    "features": [ { "icon": "🏡", "title": "獨棟庭園", "text": "獨棟度假別墅，擁有專屬庭園空間。" },
-      { "icon": "🌿", "title": "玻璃屋景觀", "text": "玻璃屋賞四季美景，被自然環繞。" },
-      { "icon": "🔥", "title": "戶外烤肉", "text": "戶外烤肉區，與親友歡聚同樂。" },
-      { "icon": "🔥", "title": "電動麻將", "text": "暫存不知道要寫啥" }
+    "features": [
+      { "icon": "🏡", "title": "獨棟包棟", "text": "整棟 7 房專屬包下，享受隱私與自在。" },
+      { "icon": "🌾", "title": "田園環繞", "text": "坐擁宜蘭冬山稻田景致，寧靜又放鬆。" },
+      { "icon": "🎉", "title": "娛樂設施", "text": "卡拉 OK、電動麻將、戲水池與戶外烤肉。" },
+      { "icon": "🐾", "title": "寵物友善", "text": "歡迎帶著毛小孩一起入住度假。" }
     ],
     "about": {
       "eyebrow": "ABOUT US",
       "heading": "關於我們",
-      "image": "/images/about.jpg",
+      "image": "/images/house.jpg",
       "imageLabel": "ABOUT",
       "paragraphs": [
-        "坐落於山林間的獨棟庭園民宿，玻璃屋賞四季美景、戶外烤肉歡聚，給你一個遠離塵囂的度假天地。",
-        "這裡是文案佔位區，可放民宿的故事、經營理念與周邊景點介紹。"
+        "「留佇」坐落於宜蘭冬山的田園之間，隨風搖曳的稻浪在藍天白雲下展開，是一處遠離塵囂、讓人放慢腳步的獨棟包棟民宿。",
+        "整棟共 7 間雙人房，基本可入住 14 人、建議最多 18 位成人，最適合家庭、好友與團體一同包棟同遊。館內備有客廳卡拉 OK、電動麻將、戶外烤肉爐與戲水池，還有設備齊全的廚房，從白天到夜晚都有屬於你們的歡聚時光。",
+        "這裡也歡迎你帶著寵物一起入住。把行程交給悠閒，讓大自然替你充電。"
       ],
       "buttonText": "交通與位置",
       "buttonHref": "/location"
@@ -83,7 +86,7 @@
     "map": {
       "eyebrow": "ACCESS",
       "heading": "交通位置",
-      "note": "歡迎加 LINE 或 Instagram 洽詢詳細交通方式",
+      "note": "歡迎加 LINE 洽詢詳細交通方式",
       "buttonText": "更多交通資訊",
       "labels": {
         "address": "地址",
@@ -108,7 +111,7 @@
         { "label": "出租方式", "value": "僅接受整棟包棟，恕不單獨出租房間" },
         { "label": "房型", "value": ["雙人房 ×7，基本可入住 14 人", "房型 1 大房間 ×3（附沙發床）、房型 2 一般房 ×4"] },
         { "label": "可住人數", "value": "3 間附沙發床房最多可再加 6 人；建議最多 18 位成人，以確保入住品質" },
-        { "label": "衛浴", "value": "房間無獨立衛浴，全館提供 2 間共用衛浴" }
+        { "label": "衛浴", "value": "每間房皆附獨立衛浴" }
       ]
     },
     "labels": {
@@ -124,17 +127,17 @@
         "name": "房型 1 ‧ 大房間",
         "capacity": "2–4 人",
         "count": "3 間",
-        "description": "寬敞的大房間，附沙發床，最多可入住 4 人，適合家庭或好友同行。",
-        "features": ["雙人床", "沙發床", "冷氣空調", "免費 Wi-Fi"],
-        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg"]
+        "description": "寬敞的大房間，附沙發床與獨立衛浴，最多可入住 4 人，適合家庭帶小朋友。",
+        "features": ["雙人床", "沙發床", "獨立衛浴", "冷氣空調", "免費 Wi-Fi", "電視"],
+        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg", "/images/bathroom1.jpg"]
       },
       {
         "name": "房型 2 ‧ 一般房間",
         "capacity": "2 人",
         "count": "4 間",
-        "description": "舒適的雙人房型，備有空調，給你安穩好眠。",
-        "features": ["雙人床", "冷氣空調", "免費 Wi-Fi"],
-        "images": ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg", "/images/room4.jpg"]
+        "description": "舒適的雙人房型，附獨立衛浴與空調，給你安穩好眠。",
+        "features": ["雙人床", "獨立衛浴", "冷氣空調", "免費 Wi-Fi", "電視"],
+        "images": ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg", "/images/room4.jpg", "/images/bathroom2.jpg"]
       }
     ]
   },
@@ -167,11 +170,6 @@
         "name": "廚房",
         "description": "開放式廚房，備有電磁爐及瓦斯爐、冰箱、冷熱飲水機、小烤箱與杯盤餐具，鍋碗瓢盆一應俱全，可自行下廚。",
         "images": ["/images/kitchen.jpg"]
-      },
-      {
-        "name": "共用衛浴",
-        "description": "房間採共用衛浴設計，全館共 2 間共用衛浴，乾淨整潔，方便整棟賓客使用。",
-        "images": ["/images/bathroom1.jpg", "/images/bathroom2.jpg"]
       }
     ]
   },
@@ -222,8 +220,8 @@
       "eyebrow": "ACCESS",
       "heading": "交通方式",
       "items": [
-        { "label": "自行開車", "text": "導航搜尋民宿名稱即可抵達，備有停車位。" },
-        { "label": "大眾運輸", "text": "（此處填寫最近車站與接駁／計程車說明）" }
+        { "label": "自行開車", "text": "從國道5號羅東交流道下，再開10分鐘就能抵達，備有多個停車位。" },
+        { "label": "大眾運輸", "text": "從冬山火車站步行約13分鐘即可抵達" }
       ]
     }
   },

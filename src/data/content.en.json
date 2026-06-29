@@ -12,6 +12,7 @@
     "facebook": "https://www.facebook.com/liozu.stay/",
     "instagram": "https://www.instagram.com/liozu.stay/",
     "address": "No. 6, Ln. 189, Sec. 2, Dongshan Rd., Dongshan Township, Yilan County, Taiwan",
+    "mapUrl": "https://maps.app.goo.gl/eoPHD1voLt734gLS9",
     "license": "B&B License No. 2560",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
     "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
@@ -53,29 +54,31 @@
 
   "home": {
     "hero": [
-      { "image": "/images/house.jpg", "caption": "The villa" },
-      { "image": "/images/pool.jpg", "caption": "Swimming pool" },
+      { "image": "/images/roomlarge1.jpg", "caption": "The villa" },
+      { "image": "/images/pool_3.jpg", "caption": "Swimming pool" },
       { "image": "/images/livingroom_1.jpg", "caption": "Living room" }
     ],
     "intro": {
       "eyebrow": "WELCOME",
-      "heading": "A Private Garden Villa",
-      "subheading": "Liozu Villa",
-      "text": "Nestled among the mountains, this private garden villa offers four-season views from its glass house and outdoor barbecue gatherings — a getaway far from the hustle and bustle."
+      "heading": "A Whole-House Villa in the Countryside",
+      "subheading": "Liozu · Dongshan, Yilan",
+      "text": "Rice fields sway in the breeze beneath blue skies — a rare sense of calm and ease. Liozu is an entire villa just for your group, perfect for families and friends to book together and let nature recharge you."
     },
     "features": [
-      { "icon": "🏡", "title": "Private Garden", "text": "A standalone villa with its own private garden." },
-      { "icon": "🌿", "title": "Glass House Views", "text": "Enjoy four-season scenery, surrounded by nature." },
-      { "icon": "🔥", "title": "Outdoor BBQ", "text": "An outdoor barbecue area for gatherings with friends and family." }
+      { "icon": "🏡", "title": "Whole House", "text": "Book all 7 rooms for full privacy and ease." },
+      { "icon": "🌾", "title": "Countryside", "text": "Surrounded by the rice fields of Dongshan, Yilan." },
+      { "icon": "🎉", "title": "Entertainment", "text": "Karaoke, mahjong, splash pool and outdoor BBQ." },
+      { "icon": "🐾", "title": "Pet Friendly", "text": "Bring your furry friends along for the stay." }
     ],
     "about": {
       "eyebrow": "ABOUT US",
       "heading": "About Us",
-      "image": "/images/about.jpg",
+      "image": "/images/house.jpg",
       "imageLabel": "ABOUT",
       "paragraphs": [
-        "Nestled among the mountains, this private garden villa offers four-season views from its glass house and outdoor barbecue gatherings — a getaway far from the hustle and bustle.",
-        "This is placeholder text — add the villa's story, philosophy, and nearby attractions here."
+        "Liozu sits among the rice fields of Dongshan, Yilan, where waves of paddy sway under blue skies and white clouds — a whole-house villa made for slowing down, far from the city's noise.",
+        "The entire house offers 7 double rooms, sleeping 14 as standard and up to 18 adults — ideal for families, friends and groups booking the whole place together. Inside you'll find living-room karaoke, an automatic mahjong table, an outdoor barbecue grill and a splash pool, plus a fully equipped kitchen, for good times from day to night.",
+        "Pets are welcome here too. Leave your schedule to leisure, and let nature recharge you."
       ],
       "buttonText": "Directions & Location",
       "buttonHref": "/location"
@@ -83,7 +86,7 @@
     "map": {
       "eyebrow": "ACCESS",
       "heading": "Location",
-      "note": "Feel free to reach us on LINE or Instagram for detailed directions.",
+      "note": "Feel free to reach us on LINE for detailed directions.",
       "buttonText": "More on getting here",
       "labels": {
         "address": "Address",
@@ -108,7 +111,7 @@
         { "label": "Rental", "value": "Whole-house booking only; individual rooms are not rented separately." },
         { "label": "Rooms", "value": ["7 double suites · sleeps 14 (base)", "Type 1 large rooms ×3 (with sofa bed), Type 2 standard rooms ×4"] },
         { "label": "Capacity", "value": "The 3 sofa-bed rooms add up to 6 more guests; recommended maximum 18 adults to ensure a comfortable stay." },
-        { "label": "Bathroom", "value": "Rooms do not have private bathrooms; two shared bathrooms are available throughout the house." }
+        { "label": "Bathroom", "value": "Every room has its own private bathroom." }
       ]
     },
     "labels": {
@@ -122,19 +125,19 @@
     "list": [
       {
         "name": "Type 1 ‧ Large Room",
-        "capacity": "3–4 guests",
+        "capacity": "2–4 guests",
         "count": "3 rooms",
-        "description": "A spacious large room with a sofa bed, sleeping up to 4 — ideal for families or groups of friends.",
-        "features": ["Double bed", "Sofa bed", "Air conditioning", "Free Wi-Fi"],
-        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg"]
+        "description": "A spacious large room with a sofa bed and a private bathroom, sleeping up to 4 — ideal for families with children.",
+        "features": ["Double bed", "Sofa bed", "Private bathroom", "Air conditioning", "Free Wi-Fi", "TV"],
+        "images": ["/images/roomlarge1.jpg", "/images/roomlarge2.jpg", "/images/roomlarge3.jpg", "/images/bathroom1.jpg"]
       },
       {
         "name": "Type 2 ‧ Standard Room",
         "capacity": "2 guests",
         "count": "4 rooms",
-        "description": "A comfortable double room with air conditioning for a restful stay.",
-        "features": ["Double bed", "Air conditioning", "Free Wi-Fi"],
-        "images": ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg", "/images/room4.jpg"]
+        "description": "A comfortable double room with a private bathroom and air conditioning for a restful stay.",
+        "features": ["Double bed", "Private bathroom", "Air conditioning", "Free Wi-Fi", "TV"],
+        "images": ["/images/room1.jpg", "/images/room2.jpg", "/images/room3.jpg", "/images/room4.jpg", "/images/bathroom2.jpg"]
       }
     ]
   },
@@ -154,7 +157,7 @@
         "images": ["/images/childplace.jpg"]
       },
       {
-        "name": "Splash Pool",
+        "name": "Splash Pool & BBQ Area",
         "description": "An outdoor splash pool — perfect for cooling off and playing in summer — plus a barbecue grill for outdoor BBQ gatherings. (Use of the splash pool costs an extra NT$1,500.)",
         "images": ["/images/pool_3.jpg", "/images/pool.jpg", "/images/pool_2.jpg"]
       },
@@ -167,11 +170,6 @@
         "name": "Kitchen",
         "description": "An open kitchen fully equipped with an induction cooker and gas stove, fridge, hot & cold water dispenser, toaster oven, and tableware — everything you need to cook your own meals.",
         "images": ["/images/kitchen.jpg"]
-      },
-      {
-        "name": "Shared Bathrooms",
-        "description": "Two clean, well-kept shared bathrooms serve the whole house, convenient for all guests.",
-        "images": ["/images/bathroom1.jpg", "/images/bathroom2.jpg"]
       }
     ]
   },
@@ -197,7 +195,7 @@
       { "label": "Date changes", "desc": "If your plans change, please notify us at least 7 days before check-in (or earlier). The deposit may be carried over once; late notice or more than one change forfeits the deposit with no extension." },
       { "label": "Balance & security deposit", "desc": "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool / barbecue cleaning fees. The deposit is fully refunded after check-out if the property is undamaged." },
       { "label": "Splash pool", "desc": "Use of the splash pool costs an extra NT$1,500. Please walk slowly and watch your step around the pool; children must be supervised by an adult at all times." },
-      { "label": "Barbecue", "desc": "Before leaving the barbecue area, please make sure the flames are completely extinguished." },
+      { "label": "Barbecue", "desc": "Before leaving the barbecue area, please make sure the flames are completely extinguished. Barbecue grill cleaning is currently free of charge." },
       { "label": "Self check-in", "desc": "This is a self check-in stay. The kitchen is fully equipped — please use it with care and clean up thoroughly afterwards. Drain and flatten trash, sort it, and place it in the bins or trash bags." },
       { "label": "Pets", "desc": "Pets are welcome — NT$300 per pet." },
       { "label": "Smoking", "desc": "Non-smoking throughout; please smoke only in designated areas." },
@@ -222,8 +220,8 @@
       "eyebrow": "ACCESS",
       "heading": "Getting Here",
       "items": [
-        { "label": "By car", "text": "Search the villa name in your navigation app; parking is available on site." },
-        { "label": "Public transit", "text": "(Add the nearest station and shuttle/taxi details here.)" }
+        { "label": "By car", "text": "Exit National Freeway No. 5 at the Luodong Interchange, then about a 10-minute drive; several parking spaces are available." },
+        { "label": "Public transit", "text": "About a 13-minute walk from Dongshan Railway Station." }
       ]
     }
   },
@@ -241,8 +239,8 @@
       "facebook": "Facebook",
       "address": "Address"
     },
-    "facebookText": "Page",
-    "instagramText": "Instagram",
+    "facebookText": "https://www.facebook.com/liozu.stay/",
+    "instagramText": "https://www.instagram.com/liozu.stay/",
     "formTitle": "Online inquiry form",
     "loadingText": "Loading…",
     "formHint": "Prefer an online form? Create a Google Form and paste its embed URL into site.googleFormUrl in content, and the embedded form will appear here.",
