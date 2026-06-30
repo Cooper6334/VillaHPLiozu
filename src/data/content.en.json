@@ -12,11 +12,25 @@
     "facebook": "https://www.facebook.com/liozu.stay/",
     "instagram": "https://www.instagram.com/liozu.stay/",
     "address": "No. 6, Ln. 189, Sec. 2, Dongshan Rd., Dongshan Township, Yilan County, Taiwan",
+    "addressLocality": "Dongshan Township",
+    "addressRegion": "Yilan County",
+    "postalCode": "269",
+    "geo": { "lat": 24.6399285, "lng": 121.7861026 },
+    "ogImage": "/images/house.jpg",
     "mapUrl": "https://maps.app.goo.gl/eoPHD1voLt734gLS9",
     "license": "B&B License No. 2560",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
     "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
     "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdbznoUXkIX5LplykNf4Zaw0D-MJhfMWXFkhPIxa3mGlanfCQ/viewform?embedded=true"
+  },
+
+  "seo": {
+    "_note": "Per-page meta descriptions (search-result snippets). Keep them specific, keyword-rich (location, features), and unique per page.",
+    "home": "Liozu Villa is a whole-house B&B among the rice fields of Dongshan, Yilan. The entire 7-room villa sleeps 6–20 guests, with karaoke, a splash pool, BBQ, mahjong and a full kitchen. Pet-friendly, near the Luodong interchange and Dongshan Station.",
+    "rooms": "Room types at Liozu Villa, a whole-house B&B in Dongshan, Yilan: 4 double rooms and 3 quad rooms, each with a private bathroom and A/C. Shared facilities include karaoke, a splash pool, BBQ, mahjong and a kitchen.",
+    "booking": "Booking info for Liozu Villa, a whole-house B&B in Dongshan, Yilan: reservation steps, deposit and security deposit, check-in/out times, pet and pool fees, and house rules.",
+    "location": "Location and access for Liozu Villa in Dongshan, Yilan: about a 10-minute drive from the Luodong interchange (Freeway 5), a 13-minute walk from Dongshan Station, with several parking spaces.",
+    "contact": "Contact Liozu Villa, a whole-house B&B in Dongshan, Yilan — ask about availability and whole-house rates via LINE, Instagram or Facebook."
   },
 
   "nav": [

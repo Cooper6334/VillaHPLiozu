@@ -14,7 +14,7 @@ const facilities = facilitiesContent.list as Facility[];
 const { intro, summary, sectionEyebrow, sectionTitle, labels, buttonText, note, itemEyebrow } = roomsContent;
 ---
 
-<BaseLayout title={intro.heading}>
+<BaseLayout title={intro.heading} description={c.seo.rooms}>
   <section class="page-intro">
     <p class="eyebrow">{intro.eyebrow}</p>
     <h2>{intro.heading}</h2>

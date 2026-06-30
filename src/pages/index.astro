@@ -3,11 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getContent, localePath } from '../data/content';
 
 const lang = Astro.currentLocale;
-const { home, site, ui } = getContent(lang);
+const c = getContent(lang);
+const { home, site, ui, seo } = c;
 const { hero, intro, features, about, map } = home;
 ---
 
-<BaseLayout>
+<BaseLayout description={seo.home}>
   <!-- ===== Hero 滿版輪播 ===== -->
   <section class="hero" aria-label={ui.heroLabel}>
     <div class="slides">

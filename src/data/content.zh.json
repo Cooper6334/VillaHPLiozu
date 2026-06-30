@@ -12,11 +12,25 @@
     "facebook": "https://www.facebook.com/liozu.stay/",
     "instagram": "https://www.instagram.com/liozu.stay/",
     "address": "台灣宜蘭縣冬山鄉太和村冬山路二段189巷6號",
+    "addressLocality": "冬山鄉",
+    "addressRegion": "宜蘭縣",
+    "postalCode": "269",
+    "geo": { "lat": 24.6399285, "lng": 121.7861026 },
+    "ogImage": "/images/house.jpg",
     "mapUrl": "https://maps.app.goo.gl/eoPHD1voLt734gLS9",
     "license": "民宿登記證編號：2560 號",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
     "bookingUrl": "https://www.booking.com/Share-cYeyCHt",
     "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdbznoUXkIX5LplykNf4Zaw0D-MJhfMWXFkhPIxa3mGlanfCQ/viewform?embedded=true"
+  },
+
+  "seo": {
+    "_說明": "各頁的 meta description（搜尋結果摘要）。請寫得具體、含關鍵字（地點、特色），每頁不同。",
+    "home": "留佇位於宜蘭冬山田園間的獨棟包棟民宿，整棟 7 房可住 6～20 人，提供卡拉OK、戲水池、烤肉、電動麻將與自助廚房，寵物友善，鄰近羅東交流道與冬山車站。",
+    "rooms": "留佇宜蘭冬山包棟民宿房型介紹：雙人房 4 間、四人房 3 間，皆附獨立衛浴與空調；公共設施含客廳卡拉OK、戲水池、烤肉區、電動麻將與廚房。",
+    "booking": "留佇宜蘭冬山包棟民宿訂房資訊：訂房流程、訂金與押金說明、入住與退房時間、寵物與戲水池費用等完整入住須知。",
+    "location": "留佇宜蘭冬山包棟民宿交通與位置：國道5號羅東交流道下車程約10分鐘，冬山火車站步行約13分鐘，備有多個停車位。",
+    "contact": "聯絡留佇宜蘭冬山包棟民宿：透過 LINE、Instagram、Facebook 線上詢問空房與包棟報價。"
   },
 
   "nav": [
