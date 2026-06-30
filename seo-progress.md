@@ -44,10 +44,14 @@
 
 ## 三、待辦項目（依優先序）
 
-### 1. 強化「留佇」品牌訊號（程式面，可立即做）
-- 首頁明確、多次出現「留佇民宿／留佇包棟民宿」全名
-- JSON-LD 加 `alternateName`（「留佇」「留佇民宿」），告訴 Google 這些別名都是同一品牌
+### 1. 強化「留佇」品牌訊號 ✅ 已完成（2026-06-30）
+- 首頁 h1 由「留佇 · 宜蘭冬山」改為「**留佇民宿** · 宜蘭冬山」，品牌全名更明確（英文同步改為 `Liozu Villa · Dongshan, Yilan`）
+- JSON-LD 加入 `alternateName` 別名，告訴 Google 這些都是同一品牌：
+  - 中文：`["留佇", "留佇民宿", "留佇包棟"]`
+  - 英文：`["Liozu", "留佇", "留佇民宿", "Liozu B&B"]`
+  - 對應檔案：`src/data/content.{zh,en}.json` 的 `site.alternateName`、`src/layouts/BaseLayout.astro`
 - 目標關鍵字：**留佇民宿**、**留佇 宜蘭**、**留佇包棟**（單字「留佇」為通用詞，不列為主要目標）
+- 狀態：本機建置驗證通過，**待 commit／push 上線**
 
 ### 2. 專屬 OG 預覽圖
 - 目前用 `house.jpg`（堪用）。建議做一張 **1200×630** 含民宿名稱的分享圖 → 放 `public/images/` → 改 `content.*.json` 的 `site.ogImage`

@@ -3,6 +3,7 @@
 
   "site": {
     "name": "Liozu Villa",
+    "alternateName": ["Liozu", "留佇", "留佇民宿", "Liozu B&B"],
     "logo": "/images/logo.png",
     "slogan": "A Private Garden Villa · Slow Down and Unwind",
     "description": "Rice fields sway in the breeze beneath blue skies and white clouds — a rare sense of calm and ease. Come let nature recharge you.",
@@ -75,7 +76,7 @@
     "intro": {
       "eyebrow": "WELCOME",
       "heading": "A Whole-House Villa in the Countryside",
-      "subheading": "Liozu · Dongshan, Yilan",
+      "subheading": "Liozu Villa · Dongshan, Yilan",
       "text": "Rice fields sway in the breeze beneath blue skies — a rare sense of calm and ease. Liozu is an entire villa just for your group, perfect for families and friends to book together and let nature recharge you."
     },
     "features": [
@@ -203,14 +204,14 @@
     "steps": [
       "Ask about availability and pricing via LINE",
       "Pay a 50% deposit to confirm your booking (deposit is non-refundable)",
-      "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool / barbecue fees (if applicable)",
-      "After check-out, once the property is confirmed undamaged, the security deposit is refunded in full within N days"
+      "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool fee (if applicable)",
+      "After check-out, once the property is confirmed undamaged, the security deposit is refunded in full within 3 days"
     ],
     "noticeTitle": "Check-in Notes",
     "notes": [
       { "label": "Check-in / out", "desc": "Check-in after 15:00, check-out before 11:00." },
       { "label": "Date changes", "desc": "If your plans change, please notify us at least 7 days before check-in (or earlier). The deposit may be carried over once; late notice or more than one change forfeits the deposit with no extension." },
-      { "label": "Balance & security deposit", "desc": "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool / barbecue cleaning fees. The deposit is fully refunded after check-out if the property is undamaged." },
+      { "label": "Balance & security deposit", "desc": "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool fee. The deposit is fully refunded after check-out if the property is undamaged." },
       { "label": "Splash pool", "desc": "Use of the splash pool costs an extra NT$1,500. Please walk slowly and watch your step around the pool; children must be supervised by an adult at all times." },
       { "label": "Barbecue", "desc": "Before leaving the barbecue area, please make sure the flames are completely extinguished. Barbecue grill cleaning is currently free of charge." },
       { "label": "Self check-in", "desc": "This is a self check-in stay. The kitchen is fully equipped — please use it with care and clean up thoroughly afterwards. Drain and flatten trash, sort it, and place it in the bins or trash bags." },
@@ -218,7 +219,7 @@
       { "label": "Smoking", "desc": "Non-smoking throughout; please smoke only in designated areas." },
       { "label": "Security & CCTV", "desc": "CCTV cameras are installed around the exterior and shared areas for guests' safety." },
       { "label": "Commercial use", "desc": "Commercial activities / filming / ceremonies require prior approval and incur additional fees." },
-      { "label": "Prohibited", "desc": "Drugs, drinking games, and any disruptive or illegal activities are strictly prohibited; violators will be reported to the authorities." }
+      { "label": "Prohibited", "desc": "Drugs, brawling, and any disruptive or illegal activities are strictly prohibited; violators will be reported to the authorities." }
     ],
     "disclaimer": "* Actual fees and terms are confirmed with the B&B at the time of booking."
   },
