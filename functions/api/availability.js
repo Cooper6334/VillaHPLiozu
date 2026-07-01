@@ -48,7 +48,10 @@ function parseBookedDates(ics) {
     if (line === 'BEGIN:VEVENT') {
       cur = {};
     } else if (line === 'END:VEVENT') {
-      if (cur && cur.start) addRange(booked, cur);
+      // 過濾掉標題包含「小幫手」的事件（例如工作人員排班，非實際訂房）
+      if (cur && cur.start && !(cur.summary && cur.summary.includes('小幫手'))) {
+        addRange(booked, cur);
+      }
       cur = null;
     } else if (cur) {
       if (line.startsWith('DTSTART')) {
@@ -57,6 +60,8 @@ function parseBookedDates(ics) {
         cur.allDay = p.allDay;
       } else if (line.startsWith('DTEND')) {
         cur.end = parseDt(line).date;
+      } else if (line.startsWith('SUMMARY')) {
+        cur.summary = line.slice(line.indexOf(':') + 1);
       }
     }
   }
