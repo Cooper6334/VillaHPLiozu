@@ -7,6 +7,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Git
 - **禁止執行 `git push`**，一律由使用者手動 push。可以 commit，但推送由使用者自行處理。
 
+## 待辦管理
+- 代辦事項一律記錄於專案根目錄的 `todo.md`（不要用 `todo.txt`）。新增、勾選、刪除待辦都在此檔操作。
+
 ## 民宿資訊
 - 衛浴：每間房皆附獨立衛浴，另有共用廁所一間（英文：Every room has its own private bathroom, plus one shared toilet.）。
 

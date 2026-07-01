@@ -63,14 +63,16 @@ const labels = {
     grid-template-columns: repeat(7, 1fr);
     gap: 4px;
   }
-  .avail-wd {
+  /* 以下格子由前端 JS 動態產生（createElement），沒有 Astro 的 scope 屬性，
+     必須用 :global() 才套得到樣式，否則已訂/可訂都不會有任何標記。 */
+  .avail-grid :global(.avail-wd) {
     text-align: center;
     font-size: 0.72rem;
     letter-spacing: 1px;
     color: var(--color-muted);
     padding-bottom: 0.3rem;
   }
-  .avail-cell {
+  .avail-grid :global(.avail-cell) {
     aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
@@ -79,10 +81,10 @@ const labels = {
     border: 1px solid transparent;
     position: relative;
   }
-  .avail-cell.empty { border: none; }
-  .avail-cell.open { border-color: var(--color-line); }
-  .avail-cell.past { color: #cfcabf; }
-  .avail-cell.booked {
+  .avail-grid :global(.avail-cell.empty) { border: none; }
+  .avail-grid :global(.avail-cell.open) { border-color: var(--color-line); }
+  .avail-grid :global(.avail-cell.past) { color: #cfcabf; }
+  .avail-grid :global(.avail-cell.booked) {
     background: #e7e3da;
     color: #9a9486;
     text-decoration: line-through;
