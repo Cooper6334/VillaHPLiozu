@@ -130,7 +130,7 @@
         { "label": "Rental", "value": "Whole-house booking only; individual rooms are not rented separately." },
         { "label": "Rooms", "value": ["Double Room ×4, 1 standard double bed", "Quad Room ×3, 1 standard double bed + 1 standard sofa bed"] },
         { "label": "Capacity", "value": "6–20 guests (Double Room 2/room, Quad Room 4/room)." },
-        { "label": "Bathroom", "value": "Every room has its own private bathroom." }
+        { "label": "Bathroom", "value": "Every room has its own private bathroom, plus one shared toilet." }
       ]
     },
     "labels": {
