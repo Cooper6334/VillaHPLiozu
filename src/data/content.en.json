@@ -203,7 +203,7 @@
     "qrAlt": "LINE add-friend QR code",
     "availability": {
       "heading": "Availability",
-      "subheading": "Grey dates are booked. Actual availability and rates are confirmed via LINE.",
+      "subheading": "Actual availability and rates are confirmed via LINE.",
       "available": "Open",
       "booked": "Booked",
       "loading": "Loading availability…",
@@ -212,7 +212,7 @@
       "next": "Next month"
     },
     "steps": [
-      "Ask about availability and pricing via LINE",
+      "Confirm availability and pricing via LINE",
       "Pay a 50% deposit to confirm your booking (deposit is non-refundable)",
       "Before or on the day of check-in, pay the remaining 50% balance plus a NT$5,000 security deposit, and settle any splash-pool fee (if applicable)",
       "After check-out, once the property is confirmed undamaged, the security deposit is refunded in full within 3 days"
