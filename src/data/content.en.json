@@ -17,7 +17,7 @@
     "addressRegion": "Yilan County",
     "postalCode": "269",
     "geo": { "lat": 24.6399285, "lng": 121.7861026 },
-    "ogImage": "/images/house.jpg",
+    "ogImage": "/images/og-cover.jpg",
     "mapUrl": "https://maps.app.goo.gl/eoPHD1voLt734gLS9",
     "license": "B&B License No. 2560",
     "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.5285609525945!2d121.7861026!3d24.639928499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3467e7bb6ba4dc79%3A0xb458d383155083f1!2z55WZ5L2H5YyF5qOf5rCR5a6_IOimquWtkCDlr7Xnianlj4vlloQg54Ok6IKJ!5e0!3m2!1szh-TW!2sjp!4v1782632452499!5m2!1szh-TW!2sjp",
@@ -80,14 +80,14 @@
       "text": "Rice fields sway in the breeze beneath blue skies — a rare sense of calm and ease. Liozu is an entire villa just for your group, perfect for families and friends to book together and let nature recharge you."
     },
     "features": [
-      { "icon": "🏡", "title": "Whole House", "text": "Book all 7 rooms for full privacy and ease." },
-      { "icon": "🌾", "title": "Countryside", "text": "Surrounded by the rice fields of Dongshan, Yilan." },
-      { "icon": "🎉", "title": "Entertainment", "text": "Karaoke, mahjong, splash pool and outdoor BBQ." },
+      { "icon": "🏡", "title": "Whole House", "text": "Book all 7 rooms, each an en-suite with a private bathroom, for full privacy and ease." },
+      { "icon": "🌾", "title": "Countryside", "text": "Surrounded by the rice fields of Dongshan, Yilan, with the Dongshan River alongside — quiet and relaxing." },
+      { "icon": "🎉", "title": "Entertainment", "text": "24-hour karaoke, an electric mahjong table, an outdoor splash pool and a BBQ area." },
       { "icon": "🐾", "title": "Pet Friendly", "text": "Bring your furry friends along for the stay." },
-      { "icon": "🛗", "title": "Elevator & Accessible", "text": "An elevator and accessible spaces make it easy for elderly guests." },
+      { "icon": "🛗", "title": "Elevator & Accessible", "text": "A private indoor elevator and accessible spaces make it easy for elderly guests." },
       { "icon": "🍳", "title": "Self-catering Kitchen", "text": "A fully equipped kitchen for cooking your own meals." },
-      { "icon": "👨‍👩‍👧‍👦", "title": "Flexible Group Size", "text": "Book the whole house for 6–20 guests — gatherings or getaways." },
-      { "icon": "🚗", "title": "Easy to Reach", "text": "Close to the Luodong Interchange and Dongshan Station — easy by car or train." }
+      { "icon": "👨‍👩‍👧‍👦", "title": "Flexible Group Size", "text": "Book the whole house for 6–20 guests — family gatherings, trips with friends, and various room combinations all work." },
+      { "icon": "🚗", "title": "Easy to Reach", "text": "Close to the Luodong Interchange and Dongshan Station — easy by car or train, with ample parking." }
     ],
     "about": {
       "eyebrow": "ABOUT US",
