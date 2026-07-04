@@ -56,6 +56,11 @@
 |-------|------------|
 |       |            |
 
+## 手機版排版問題分析（2026-07-04，Phase 9）
+1. **Footer 分頁連結**：Footer.astro 已有 `.footer-nav` CSS（歷史遺留）但沒有對應 HTML → 補上 nav markup 即可，資料用 content 的 `nav` + `localePath`。
+2. **rooms 手機版照片位置**：桌機規則 `.room.reverse { grid-template-columns: 1fr 61.5%; }`（specificity 0,2,0）蓋過 820px media query 裡的 `.room { grid-template-columns: 1fr; }`（0,1,0），reverse 卡片在手機仍為兩欄 → media query 內補 `.room.reverse` 選擇器。
+3. **contact 橫向捲動**：`contact.facebookText` / `instagramText` 是完整網址（不可斷行長字串），`.info-row` 是 flex、連結無 `min-width:0`，撐破容器 → 連結加 `min-width:0; overflow-wrap:anywhere`，手機版把 `line-height:3.4` 改為正常行高 + padding 以免換行後列高過大。
+
 ## Resources
 - 參考站：https://tw-bnb.com/web/hxybnb/index.php?page=about.php
 - Astro 官方文件：https://docs.astro.build

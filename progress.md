@@ -212,6 +212,17 @@
 - 驗證：build 成功（10 頁、88 個 webp 變體）；preview 200（/、/rooms/、/en/rooms/、/contact/）；dist 無殘留舊圖路徑（僅 line-qr 屬預期）；hero 首圖 fetchpriority=high；JSON-LD logo 指向 _astro PNG
 - Files: src/data/images.ts(新), index.astro, RoomGallery.astro, Header.astro, BaseLayout.astro, readme.md, public/images/README.md, 19 張圖片搬移
 
+## Session: 2026-07-04（手機版排版修正 Phase 9）
+
+### 手機版三處修正
+- **Status:** complete（待使用者 commit）
+- Actions taken:
+  - Footer.astro：補上 `<nav class="footer-nav">` 分頁連結（nav 資料 + localePath，雙語自動對應；`.footer-nav` CSS 原本就存在但沒有 markup）
+  - rooms.astro：820px media query 內原本只有 `.room { grid-template-columns:1fr }`，被桌機 `.room.reverse { 1fr 61.5% }`（specificity 較高）蓋掉，導致 reverse 卡片手機仍兩欄、照片在文字左邊 → media query 補 `.room, .room.reverse` 一併覆蓋
+  - contact.astro：IG/FB 顯示文字是完整網址（不可斷行）撐出橫向捲動 → `.info-row a { min-width:0; overflow-wrap:anywhere }`、label `flex-shrink:0`；600px 以下 `.info-row` 改 `line-height:1.8 + padding-block:0.9rem`（避免換行後每行吃到 3.4 行高）
+- 驗證：build 成功 10 頁；dist 確認 zh/en footer 都有 5 個分頁連結、rooms media query 內含 `.room.reverse{grid-template-columns:1fr}`、contact 含 overflow-wrap:anywhere；桌機規則皆未修改
+- Files: Footer.astro, rooms.astro, contact.astro
+
 ## Test Results
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|

@@ -148,7 +148,9 @@ const { intro, summary, sectionEyebrow, sectionTitle, labels, buttonText, note, 
   .facilities-title { margin-top: 5.5rem; }
 
   @media (max-width: 820px) {
-    .room { grid-template-columns: 1fr; gap: 1.5rem; }
+    /* .room.reverse 桌機規則 specificity 較高，需一併覆蓋才能收成單欄（照片統一在文字上方） */
+    .room,
+    .room.reverse { grid-template-columns: 1fr; gap: 1.5rem; }
     .room.reverse .room-media { order: 0; }
   }
 </style>

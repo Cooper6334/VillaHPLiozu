@@ -2,7 +2,7 @@
 import { getContent, localePath } from '../data/content';
 import SocialIcons from './SocialIcons.astro';
 const lang = Astro.currentLocale;
-const { site, ui } = getContent(lang);
+const { site, nav, ui } = getContent(lang);
 const year = new Date().getFullYear();
 const copyright = ui.copyright.replace('{year}', String(year)).replace('{name}', site.name);
 ---
@@ -10,6 +10,12 @@ const copyright = ui.copyright.replace('{year}', String(year)).replace('{name}',
 <footer class="site-footer">
   <div class="container footer-inner">
     <a href={localePath(lang, '/')} class="footer-brand">{site.name}</a>
+
+    <nav class="footer-nav">
+      {nav.map((item) => (
+        <a href={localePath(lang, item.href)}>{item.label}</a>
+      ))}
+    </nav>
 
     <div class="footer-info">
       <p>{site.address}</p>

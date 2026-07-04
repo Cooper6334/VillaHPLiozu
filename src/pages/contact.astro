@@ -68,10 +68,16 @@ const hasForm = site.googleFormUrl.trim().length > 0;
     border-bottom: 1px solid var(--color-line);
   }
   .info-row span:first-child {
+    flex-shrink: 0;
     width: 90px;
     letter-spacing: 3px;
     color: var(--color-muted);
     font-size: 0.85rem;
+  }
+  /* IG/FB 為完整網址（不可斷行長字串），允許在任意處換行以免撐出橫向捲動 */
+  .info-row a {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .info-row a:hover { text-decoration: underline; }
   .contact-btn { display: block; text-align: center; margin-top: 2rem; }
@@ -95,5 +101,7 @@ const hasForm = site.googleFormUrl.trim().length > 0;
   }
   @media (max-width: 600px) {
     .contact-form { padding: 1.5rem; }
+    /* 網址換行時避免每行都吃到 3.4 的行高，改用 padding 維持列高 */
+    .info-row { line-height: 1.8; padding-block: 0.9rem; }
   }
 </style>

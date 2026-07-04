@@ -4,7 +4,7 @@
 用 Astro 建置一個民宿型錄式靜態網站，部署到 Cloudflare Pages；先不接 Formspree，需要表單時改用 Google 表單（嵌入或連結）。
 
 ## Current Phase
-Phase 8（SEO 圖片優化）
+Phase 9（手機版排版修正）
 
 ## Phases
 
@@ -63,6 +63,13 @@ Phase 8（SEO 圖片優化）
 - [x] logo 縮小（513KB → 4KB webp @1x）
 - [x] build + preview 驗證，更新 readme.md 與 public/images/README.md
 - **Status:** complete（待使用者 commit/push 上線）
+
+### Phase 9: 手機版排版修正（2026-07-04）
+- [x] 置底（footer）加入分頁連結（Footer.astro 補 nav markup，CSS 原本就有）
+- [x] 房間與設施頁：手機版統一照片放文字上面（media query 內補 `.room.reverse` 覆蓋桌機兩欄規則）
+- [x] 聯絡我們頁：IG/FB 網址過長造成橫向捲動 → 連結 `overflow-wrap:anywhere` 換行 + 手機版行高調整
+- [x] build 成功（10 頁）+ dist 驗證中英文皆正確，桌機規則未動
+- **Status:** complete（待使用者 commit/push）
 
 ## Key Questions
 1. 內容用真實資料、範例資料、還是參考站改寫？（待確認）
