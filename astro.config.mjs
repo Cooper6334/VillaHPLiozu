@@ -7,6 +7,9 @@ import sitemap from '@astrojs/sitemap';
 // sitemap、canonical、og:url、JSON-LD 全都依賴這個值，填錯會導致 SEO 失效。
 export default defineConfig({
   site: 'https://liozu-stay.com',
+  // 全站網址一律帶結尾斜線，與 sitemap／canonical／伺服器 200 版本一致，
+  // 避免站內連結被 308 導向而讓 GSC 報「頁面會重新導向」。
+  trailingSlash: 'always',
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],

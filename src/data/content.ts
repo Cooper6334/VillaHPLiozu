@@ -34,11 +34,12 @@ export function getContent(locale?: string | null) {
   return all[getLang(locale)];
 }
 
-// 將內部連結加上語言前綴（中文無前綴，英文加 /en）。
+// 將內部連結加上語言前綴（中文無前綴，英文加 /en），並保證結尾斜線。
+// 結尾斜線要與 sitemap／canonical／伺服器實際 200 的網址一致，
+// 否則站內連結（/rooms）會被 308 導向到 /rooms/，導致 GSC 報「頁面會重新導向」。
 export function localePath(locale: string | null | undefined, href: string): string {
-  if (getLang(locale) === 'zh') return href;
-  if (href === '/') return '/en/';
-  return '/en' + href;
+  const prefixed = getLang(locale) === 'zh' ? href : href === '/' ? '/en/' : '/en' + href;
+  return prefixed.endsWith('/') ? prefixed : prefixed + '/';
 }
 
 // 語言選單清單（給語言切換器用）。
