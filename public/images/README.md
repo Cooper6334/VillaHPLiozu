@@ -1,12 +1,11 @@
-# 圖片放這裡
+# 這個資料夾只放「原樣輸出」的圖片
 
-把民宿照片放在這個資料夾，網站就能用 `/images/檔名` 引用。
+一般民宿照片請放 **`src/assets/images/`**（建置時會自動壓縮、轉 WebP、產生多尺寸），
+`content.json` 內的路徑仍寫 `/images/檔名.jpg`，不用改寫法。
 
-建議檔名（對應目前程式碼，放進來後把對應的佔位 `<div>` 換成 `<img>`）：
+只有「網址必須固定、不能被壓縮改名」的檔案才放這裡：
 
-- 首頁輪播：`hero-1.jpg`、`hero-2.jpg`、`hero-3.jpg`
-- 房型照片：`room-double.jpg`、`room-family.jpg`、`room-glass.jpg`、`room-villa.jpg`
+- `og-cover.jpg`：社群分享（FB／LINE）預覽圖，網址固定為 `/images/og-cover.jpg`
+- `line-qr.png`：LINE QR code
 
-小提醒：
-- 上傳前先壓縮（建議寬度 1600px 內、用 https://squoosh.app 轉成 .webp 或壓過的 .jpg），網站才會快。
-- 房型照片檔名要和 `src/data/rooms.ts` 裡的 `image` 欄位一致。
+詳細說明見專案根目錄的 `readme.md`。

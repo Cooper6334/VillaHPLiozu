@@ -1,6 +1,8 @@
 ---
 // 房型照片輪播：主圖 + 下方縮圖（縮圖取代點點，並標示目前照片）。
+import { Image } from 'astro:assets';
 import { getContent } from '../data/content';
+import { resolveImage } from '../data/images';
 
 interface Props {
   images: string[];
@@ -14,7 +16,15 @@ const multiple = images.length > 1;
 <div class="room-gallery">
   <div class="gallery-main">
     {images.map((src, i) => (
-      <img src={src} alt={alt} class:list={['gallery-img', { active: i === 0 }]} loading="lazy" />
+      <Image
+        src={resolveImage(src)}
+        alt={alt}
+        class:list={['gallery-img', { active: i === 0 }]}
+        widths={[640, 1024, 1400]}
+        sizes="(max-width: 820px) 92vw, 660px"
+        format="webp"
+        loading="lazy"
+      />
     ))}
     {multiple && (
       <>
@@ -32,7 +42,7 @@ const multiple = images.length > 1;
           type="button"
           aria-label={ui.slideLabel.replace('{n}', String(i + 1))}
         >
-          <img src={src} alt="" loading="lazy" />
+          <Image src={resolveImage(src)} alt="" class="thumb-img" width={240} format="webp" loading="lazy" />
         </button>
       ))}
     </div>
@@ -99,7 +109,7 @@ const multiple = images.length > 1;
     outline-offset: -2px;
     line-height: 0;
   }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .thumb .thumb-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
   .thumb:hover { opacity: 0.85; }
   .thumb.active { opacity: 1; outline-color: var(--color-dark); }
 

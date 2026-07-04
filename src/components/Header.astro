@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { getContent, localePath } from '../data/content';
+import { resolveImage } from '../data/images';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
 const lang = Astro.currentLocale;
@@ -15,7 +17,15 @@ const isActive = (href: string) => {
 <header class="site-header">
   <div class="container header-inner">
     <a href={localePath(lang, '/')} class="brand" aria-label={site.name}>
-      <img src={site.logo} alt={site.name} class="brand-logo" />
+      <Image
+        src={resolveImage(site.logo)}
+        alt={site.name}
+        class="brand-logo"
+        height={48}
+        densities={[1, 2, 3]}
+        format="webp"
+        loading="eager"
+      />
     </a>
 
     <nav class="site-nav">

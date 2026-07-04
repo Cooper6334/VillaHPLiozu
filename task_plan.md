@@ -4,7 +4,7 @@
 用 Astro 建置一個民宿型錄式靜態網站，部署到 Cloudflare Pages；先不接 Formspree，需要表單時改用 Google 表單（嵌入或連結）。
 
 ## Current Phase
-Phase 7（等待真實資料 + 部署）
+Phase 8（SEO 圖片優化）
 
 ## Phases
 
@@ -55,6 +55,14 @@ Phase 7（等待真實資料 + 部署）
 - [ ] 取得 *.pages.dev 預覽網址
 - [ ] （後續）綁定自訂網域 + DNS
 - **Status:** pending（需使用者的 GitHub / Cloudflare 帳號）
+
+### Phase 8: SEO 圖片優化（2026-07-04）
+- [x] 內容圖片移到 src/assets/images，建立路徑解析器（content.json 路徑格式不變）
+- [x] 全站 <img> 改用 astro:assets <Image>（WebP + srcset + lazy）
+- [x] hero 首圖 eager + fetchpriority=high，其餘 lazy
+- [x] logo 縮小（513KB → 4KB webp @1x）
+- [x] build + preview 驗證，更新 readme.md 與 public/images/README.md
+- **Status:** complete（待使用者 commit/push 上線）
 
 ## Key Questions
 1. 內容用真實資料、範例資料、還是參考站改寫？（待確認）

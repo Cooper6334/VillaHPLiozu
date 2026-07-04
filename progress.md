@@ -196,6 +196,22 @@
   - 待使用者實測送出一筆確認進 Google 試算表
 - Files: BookingForm.astro(新), contact.astro, content.zh.json, content.en.json
 
+## Session: 2026-07-04（SEO 圖片優化）
+
+### Phase 8: 圖片優化（WebP + srcset + lazy）
+- **Status:** complete（待使用者 commit/push）
+- Actions taken:
+  - 19 張內容圖片 git mv：public/images → src/assets/images（og-cover.jpg、line-qr.png、rocking-chair.jpg 留在 public）
+  - 新增 src/data/images.ts：resolveImage() 用 import.meta.glob 把 content.json 的 "/images/xxx.jpg" 對應到 src/assets 實體檔（content.json 寫法不變）
+  - index.astro hero：<Image> widths [768,1280,1920] sizes 100vw；首圖 eager+fetchpriority=high、其餘 lazy；about 圖 lazy
+  - RoomGallery：主圖 <Image> widths [640,1024,1400]、縮圖 width 240，皆 lazy
+  - Header logo：<Image> height 48 densities [1,2,3] webp（513KB → 4KB @1x）
+  - BaseLayout：JSON-LD logo 改 getImage() 輸出縮小版 PNG 絕對網址；ogImage fallback 改 og-cover.jpg
+  - 注意點：Astro scoped CSS 不及於子元件輸出的 <img>，故傳入 class（slide-img/about-photo/thumb-img）並同步改選擇器
+  - 更新 readme.md「換圖片」流程與 public/images/README.md
+- 驗證：build 成功（10 頁、88 個 webp 變體）；preview 200（/、/rooms/、/en/rooms/、/contact/）；dist 無殘留舊圖路徑（僅 line-qr 屬預期）；hero 首圖 fetchpriority=high；JSON-LD logo 指向 _astro PNG
+- Files: src/data/images.ts(新), index.astro, RoomGallery.astro, Header.astro, BaseLayout.astro, readme.md, public/images/README.md, 19 張圖片搬移
+
 ## Test Results
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|

@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getContent, localePath } from '../data/content';
+import { resolveImage } from '../data/images';
 
 const lang = Astro.currentLocale;
 const c = getContent(lang);
@@ -14,7 +16,16 @@ const { hero, intro, features, about, map } = home;
     <div class="slides">
       {hero.map((slide, i) => (
         <div class:list={['slide', { active: i === 0 }]} data-slide={i}>
-          <img src={slide.image} alt={slide.caption} />
+          <Image
+            src={resolveImage(slide.image)}
+            alt={slide.caption}
+            class="slide-img"
+            widths={[768, 1280, 1920]}
+            sizes="100vw"
+            format="webp"
+            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchpriority={i === 0 ? 'high' : 'auto'}
+          />
         </div>
       ))}
     </div>
@@ -51,7 +62,17 @@ const { hero, intro, features, about, map } = home;
   <!-- ===== 關於我們（圖文重疊）===== -->
   <section class="about-section">
     <div class="container about-box">
-      <div class="about-img"><img src={about.image} alt={about.heading} /></div>
+      <div class="about-img">
+        <Image
+          src={resolveImage(about.image)}
+          alt={about.heading}
+          class="about-photo"
+          widths={[768, 1500]}
+          sizes="(max-width: 900px) 100vw, 750px"
+          format="webp"
+          loading="lazy"
+        />
+      </div>
       <div class="about-text">
         <p class="eyebrow">{about.eyebrow}</p>
         <h2>{about.heading}</h2>
@@ -102,7 +123,7 @@ const { hero, intro, features, about, map } = home;
   .slides, .slide { position: absolute; inset: 0; }
   .slide { opacity: 0; transition: opacity 0.9s ease; }
   .slide.active { opacity: 1; }
-  .slide img { width: 100%; height: 100%; object-fit: cover; }
+  .slide .slide-img { width: 100%; height: 100%; object-fit: cover; }
   .hero-arrow {
     position: absolute; top: 50%; transform: translateY(-50%);
     z-index: 3; background: transparent; color: #fff; mix-blend-mode: difference;
@@ -142,7 +163,7 @@ const { hero, intro, features, about, map } = home;
   .about-section { padding-block: clamp(3rem, 7vw, 6rem); }
   .about-box { position: relative; }
   .about-img { width: min(750px, 100%); height: 500px; }
-  .about-img img { width: 100%; height: 100%; object-fit: cover; }
+  .about-img .about-photo { width: 100%; height: 100%; object-fit: cover; }
   .about-text {
     background: #fff;
     padding: 3rem;

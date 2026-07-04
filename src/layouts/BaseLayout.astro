@@ -1,6 +1,8 @@
 ---
+import { getImage } from 'astro:assets';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
+import { resolveImage } from '../data/images';
 import Footer from '../components/Footer.astro';
 import SideSocial from '../components/SideSocial.astro';
 import { getContent, getLang } from '../data/content';
@@ -27,7 +29,11 @@ const enHref = basePath === '/' ? '/en/' : '/en' + basePath;
 const canonicalUrl = new URL(path, Astro.site).href;
 const zhUrl = new URL(zhHref, Astro.site).href;
 const enUrl = new URL(enHref, Astro.site).href;
-const ogImageUrl = new URL(site.ogImage ?? '/images/house.jpg', Astro.site).href;
+const ogImageUrl = new URL(site.ogImage ?? '/images/og-cover.jpg', Astro.site).href;
+
+// logo 實體檔在 src/assets/images，輸出縮小版給 JSON-LD 使用
+const logoOptimized = await getImage({ src: resolveImage(site.logo), height: 200, format: 'png' });
+const logoUrl = new URL(logoOptimized.src, Astro.site).href;
 
 // ===== JSON-LD 結構化資料（民宿，強化在地搜尋）=====
 const jsonLd = {
@@ -38,7 +44,7 @@ const jsonLd = {
   description: site.description,
   url: Astro.site?.href,
   image: ogImageUrl,
-  logo: new URL(site.logo, Astro.site).href,
+  logo: logoUrl,
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.address,

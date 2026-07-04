@@ -28,15 +28,19 @@ src/data/content.en.json   ← 英文（網址 /en/ ）
 存檔後重新整理瀏覽器（開發模式）或重新建置即可看到變化。
 
 ## 換圖片
-1. 把照片放進 `public/images/` 資料夾。
-2. 在 `content.json` 把對應的 `image` 路徑改成 `/images/你的檔名.jpg`。
+1. 把照片放進 `src/assets/images/` 資料夾。
+2. 在 `content.json` 把對應的 `image` 路徑改成 `/images/你的檔名.jpg`（路徑寫法不變，建置時會自動對應）。
 
 對應的圖片欄位：
 - 首頁輪播：`home.hero[].image`
 - 關於我們：`home.about.image`
-- 各房型：`rooms.list[].image`
+- 各房型／設施：`rooms.list[].images`、`rooms.facilities[].images`
 
-> 小提醒：上傳前先壓縮（建議寬度 1600px 內），網站才會快。
+> 建置時會自動壓縮、轉 WebP 並產生多種尺寸（手機載小圖、電腦載大圖），所以**不需要先手動壓縮**，放原圖即可。
+
+**例外**（放 `public/images/`，網站原樣輸出、不壓縮）：
+- `og-cover.jpg`：社群分享預覽圖（網址必須固定）
+- `line-qr.png`：LINE QR code
 
 ## 增 / 減房型、特色、須知
 這些是「陣列」，可以自由增加或刪除整段 `{ ... }`：

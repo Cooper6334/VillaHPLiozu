@@ -2,7 +2,7 @@
 
 > 網站：留佇包棟民宿　https://liozu-stay.com
 > 平台：Astro 靜態網站 + Cloudflare Pages（接 GitHub 自動部署）
-> 最後更新：2026-06-30
+> 最後更新：2026-07-04
 
 ---
 
@@ -23,11 +23,36 @@
 | 每頁獨立 description | 5 頁中英各一段含關鍵字描述，集中於 `seo` 區塊管理 | `src/data/content.{zh,en}.json` |
 | og:image / 經緯度 | site 區塊新增 `ogImage`、`geo`、`addressLocality/Region/postalCode` | `src/data/content.{zh,en}.json` |
 | Cloudflare build 修復 | 重新產生 `package-lock.json`，補回缺漏的 `@emnapi` 套件定義（解決 `npm ci` Missing 錯誤） | `package-lock.json` |
+| 圖片優化（2026-07-04，待上線） | 全站改 astro:assets `<Image>`：WebP＋srcset＋lazy，hero 首圖 fetchpriority=high，logo 513KB→4KB | `src/data/images.ts`、`index.astro`、`RoomGallery.astro`、`Header.astro`、`BaseLayout.astro` |
 
 ### 線上驗證結果（2026-06-30）
 - `https://liozu-stay.com/sitemap-index.xml` → HTTP 200、`application/xml` ✅
 - `https://liozu-stay.com/robots.txt` → HTTP 200、`text/plain` ✅
 - 首頁含 canonical + hreflang + 新版 meta description ✅
+
+### 修正 GSC「頁面會重新導向」（2026-07-04）
+**問題**：GSC 通知「有新的原因導致網頁無法建立索引 → 頁面會重新導向」。
+
+**根因**：sitemap／canonical／伺服器實際 200 的網址都用**結尾斜線**（`/rooms/`），但站內導覽連結（nav／Footer／按鈕）產生的是**無斜線**網址（`/rooms`），被伺服器 308 導向到有斜線版。Google 沿站內連結爬到無斜線網址 → 遇導向 → 報「頁面會重新導向」。
+
+**線上導向行為（curl 驗證）**：
+- `http://…/` → 301 → https（正常）
+- `https://…/rooms`（無斜線）→ 308 → `/rooms/`
+- `https://…/rooms/`（有斜線）→ 200 ✅
+- `www.liozu-stay.com` → 連不上（未設定，暫無外部連結指向，先不處理）
+
+**修正內容**：
+| 項目 | 內容 | 檔案 |
+|------|------|------|
+| 內部連結補斜線 | `localePath()` 一律回傳結尾斜線網址，站內連結直接指向 200 頁面 | `src/data/content.ts` |
+| 固定斜線策略 | 加 `trailingSlash: 'always'`，避免日後又寫出無斜線連結 | `astro.config.mjs` |
+
+**驗證**：`npm run build` 後，10 頁站內連結全部為有斜線（`/rooms/`、`/en/rooms/`…）✅
+
+**待辦**：
+- ⬜ commit + push → 等 Cloudflare Pages 部署
+- ⬜ GSC 該報告頁按「驗證修正」(Validate Fix)，等 Google 重新爬取轉綠
+- ⬜（選配）Cloudflare 加 `www → 主網域` 301
 
 ---
 
@@ -53,12 +78,18 @@
 - 目標關鍵字：**留佇民宿**、**留佇 宜蘭**、**留佇包棟**（單字「留佇」為通用詞，不列為主要目標）
 - 狀態：本機建置驗證通過，**待 commit／push 上線**
 
-### 2. 專屬 OG 預覽圖
-- 目前用 `house.jpg`（堪用）。建議做一張 **1200×630** 含民宿名稱的分享圖 → 放 `public/images/` → 改 `content.*.json` 的 `site.ogImage`
+### 2. 專屬 OG 預覽圖 ✅ 已完成
+- `public/images/og-cover.jpg` 已建立並設定於 `content.*.json` 的 `site.ogImage`
 
-### 3. 圖片優化
-- 改用 Astro `<Image>` 元件自動轉 WebP + lazy load，並補齊 `alt` 文字
-- 改善 Core Web Vitals（載入速度，排名因素）與圖片搜尋曝光
+### 3. 圖片優化 ✅ 已完成（2026-07-04，待 commit/push 上線）
+- 19 張內容圖片搬到 `src/assets/images/`，新增 `src/data/images.ts` 解析器（`content.json` 路徑寫法 `/images/xxx.jpg` 不變）
+- 全站 `<img>` 改用 astro:assets `<Image>`：自動轉 **WebP** + **srcset 多尺寸**（手機載小圖）+ **lazy load**
+- 首頁 hero 首圖 `loading="eager"` + `fetchpriority="high"`（改善 LCP），其餘輪播圖與 about 圖 lazy
+- Header logo：513KB PNG → 4KB WebP（@1x，另有 2x/3x 版本）；JSON-LD 的 logo 改指向縮小版
+- 例外保留於 `public/images/`：`og-cover.jpg`（OG 網址須固定）、`line-qr.png`
+- alt 文字：全站圖片皆有 alt（來自 content.json 的標題/說明；縮圖為裝飾性 alt=""）
+- 驗證：build 10 頁 + 88 個 webp 變體；preview 全頁 200；hero 首圖含 fetchpriority=high
+- 維護方式改變：新照片放 `src/assets/images/`（不用先手動壓縮），詳見 `readme.md`
 
 ### 4. 收錄追蹤
 - 數日後用 `site:liozu-stay.com` 確認 Google 是否已收錄
