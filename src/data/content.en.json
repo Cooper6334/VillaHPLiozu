@@ -211,12 +211,11 @@
     "notes": [
       { "label": "Check-in / out", "desc": "Check-in after 15:00, check-out before 11:00." },
       { "label": "Date changes", "desc": "If your plans change, please notify us at least 7 days before check-in (or earlier). The deposit may be carried over once; late notice or more than one change forfeits the deposit with no extension." },
-      { "label": "Balance & security deposit", "desc": "Before or on the day of check-in, pay the remaining balance (70% of the accommodation fee) plus a NT$5,000 security deposit, and settle any splash-pool fee. The deposit is fully refunded after check-out if the property is undamaged." },
       { "label": "Splash pool", "desc": "Use of the splash pool costs an extra NT$1,500. Please walk slowly and watch your step around the pool; children must be supervised by an adult at all times." },
       { "label": "Barbecue", "desc": "Before leaving the barbecue area, please make sure the flames are completely extinguished. Barbecue grill cleaning is currently free of charge." },
       { "label": "Self check-in", "desc": "This is a self check-in stay. The kitchen is fully equipped — please use it with care and clean up thoroughly afterwards. Drain and flatten trash, sort it, and place it in the bins or trash bags." },
-      { "label": "Pets", "desc": "Pets are welcome — NT$300 per pet." },
-      { "label": "Smoking", "desc": "Non-smoking throughout; please smoke only in designated areas." },
+      { "label": "Pets", "desc": "Pets are welcome — NT$300 per pet per night. Please help keep the space clean." },
+      { "label": "Smoking", "desc": "No smoking indoors; please smoke only in the designated outdoor areas." },
       { "label": "Security & CCTV", "desc": "CCTV cameras are installed around the exterior and shared areas for guests' safety." },
       { "label": "Commercial use", "desc": "Commercial activities / filming / ceremonies require prior approval and incur additional fees." },
       { "label": "Prohibited", "desc": "Drugs, brawling, and any disruptive or illegal activities are strictly prohibited; violators will be reported to the authorities." }
