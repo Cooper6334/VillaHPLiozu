@@ -223,6 +223,17 @@
 - 驗證：build 成功 10 頁；dist 確認 zh/en footer 都有 5 個分頁連結、rooms media query 內含 `.room.reverse{grid-template-columns:1fr}`、contact 含 overflow-wrap:anywhere；桌機規則皆未修改
 - Files: Footer.astro, rooms.astro, contact.astro
 
+### Phase 6 最終檢查（真實內容上線後）
+- **Status:** complete
+- 檢查結果（2026-07-04）：
+  - content 資料無佔位字（○○/範例/TODO 皆無）
+  - dist 所有 <img> 都有具描述性的 alt
+  - 內部連結（/、/rooms/、/booking/、/location/、/contact/、/en/*）全部對應到實體頁面
+  - 外部連結皆為正式值：LINE、IG、FB、Google Maps、Booking.com、Google 表單
+  - 正式站 https://liozu-stay.com：7 頁皆 200、robots.txt 200、sitemap-index.xml 200、footer-nav 已在線上（最新版已部署）
+  - astro.config site=https://liozu-stay.com 與實際網域一致（canonical/sitemap 正確）
+- 使用者回報：Phase 7 部署完成、手機版檢查完成
+
 ## Test Results
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|

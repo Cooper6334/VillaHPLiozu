@@ -4,7 +4,7 @@
 用 Astro 建置一個民宿型錄式靜態網站，部署到 Cloudflare Pages；先不接 Formspree，需要表單時改用 Google 表單（嵌入或連結）。
 
 ## Current Phase
-Phase 9（手機版排版修正）
+全部完成（1–9），進入維護模式；網站已上線 https://liozu-stay.com
 
 ## Phases
 
@@ -46,15 +46,13 @@ Phase 9（手機版排版修正）
 ### Phase 6: 測試與本地預覽
 - [x] `npm run build` 成功（5 頁）
 - [x] `npm run preview`：首頁/房型/詢問頁皆 HTTP 200，title 正確
-- [ ] 待真實內容與圖片後再做 RWD / 連結 / alt 最終檢查
-- **Status:** in_progress
+- [x] 真實內容最終檢查（2026-07-04）：無佔位字、alt 齊全、內部連結全部有效、外部連結（LINE/IG/FB/Map/Booking/Google 表單）皆為正式值、正式站 7 頁 200、robots.txt + sitemap 200
+- **Status:** complete
 
 ### Phase 7: 部署與網域
-- [ ] 推到 GitHub
-- [ ] 連接 Cloudflare Pages 自動部署
-- [ ] 取得 *.pages.dev 預覽網址
-- [ ] （後續）綁定自訂網域 + DNS
-- **Status:** pending（需使用者的 GitHub / Cloudflare 帳號）
+- [x] 推到 GitHub
+- [x] 連接 Cloudflare Pages 自動部署（使用者於 2026-07-04 回報完成）
+- **Status:** complete
 
 ### Phase 8: SEO 圖片優化（2026-07-04）
 - [x] 內容圖片移到 src/assets/images，建立路徑解析器（content.json 路徑格式不變）
