@@ -6,7 +6,7 @@ import { getContent } from '../data/content';
 const c = getContent(Astro.currentLocale);
 const { site } = c;
 const contactContent = c.contact;
-const { intro, buttonText, infoLabels, facebookText, instagramText, formHint } = contactContent;
+const { intro, buttonText, lineNote, infoLabels, facebookText, instagramText, formHint } = contactContent;
 const f = contactContent.form;
 // 點地址可開啟物件的 Google Map（連結存在 site.mapUrl）
 const mapsUrl = site.mapUrl;
@@ -33,6 +33,8 @@ const hasForm = site.googleFormUrl.trim().length > 0;
           <div class="info-row"><span>{infoLabels.address}</span><a href={mapsUrl} target="_blank" rel="noopener">{site.address}</a></div>
         </div>
         <a href={site.lineUrl} target="_blank" rel="noopener" class="btn contact-btn">{buttonText}</a>
+        {/* 官方帳號無法主動加好友，提醒使用者自行加好友再傳訊 */}
+        <p class="line-note">{lineNote}</p>
       </div>
 
       <!-- 訂房諮詢表單 -->
@@ -81,6 +83,12 @@ const hasForm = site.googleFormUrl.trim().length > 0;
   }
   .info-row a:hover { text-decoration: underline; }
   .contact-btn { display: block; text-align: center; margin-top: 2rem; }
+  .line-note {
+    margin-top: 0.9rem;
+    font-size: 0.8rem;
+    line-height: 1.9;
+    color: var(--color-muted);
+  }
 
   /* 訂房諮詢方塊（底色卡片）*/
   .contact-form {

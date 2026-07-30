@@ -19,6 +19,10 @@ const E = {
   contact: 'entry.1146253173',
   message: 'entry.667379932',
 };
+
+// 聯絡方式限填 Email：type=email 只保證有 @，再用 pattern 要求網域含「.副檔名」。
+// 注意：這裡不能寫在 HTML 屬性字面值裡，Astro 編譯時會吃掉反斜線。
+const EMAIL_PATTERN = '[^@\\s]+@[^@\\s]+\\.[A-Za-z]{2,}';
 ---
 
 <form
@@ -29,6 +33,7 @@ const E = {
   data-sending={f.sending}
   data-success={f.success}
   data-error={f.error}
+  data-invalid-email={f.contactInvalid}
 >
   <div class="bf-grid">
     <label class="bf-field">
@@ -53,7 +58,16 @@ const E = {
     </label>
     <label class="bf-field bf-full">
       <span>{f.contact} <i class="req">*</i></span>
-      <input type="text" name={E.contact} required />
+      <input
+        type="email"
+        name={E.contact}
+        inputmode="email"
+        autocomplete="email"
+        placeholder={f.contactPlaceholder}
+        pattern={EMAIL_PATTERN}
+        title={f.contactInvalid}
+        required
+      />
     </label>
     <label class="bf-field bf-full">
       <span>{f.message} <em>{f.optional}</em></span>
@@ -131,6 +145,22 @@ const E = {
     const statusEl = form.querySelector<HTMLParagraphElement>('.bf-status')!;
     const iframe = form.parentElement?.querySelector<HTMLIFrameElement>('iframe.bf-target');
     let submitted = false;
+
+    // 聯絡方式限填 Email：用瀏覽器原生驗證擋下送出，並顯示中／英文提示
+    const emailEl = form.querySelector<HTMLInputElement>('input[type="email"]');
+    if (emailEl) {
+      const msg = form.dataset.invalidEmail || '';
+      const validate = () => {
+        // 只覆寫「格式不符」的訊息；未填寫仍沿用瀏覽器預設提示
+        const bad = emailEl.validity.typeMismatch || emailEl.validity.patternMismatch;
+        emailEl.setCustomValidity(bad ? msg : '');
+      };
+      emailEl.addEventListener('input', () => {
+        emailEl.setCustomValidity('');
+        validate();
+      });
+      emailEl.addEventListener('invalid', validate);
+    }
 
     const setStatus = (text: string, cls: string) => {
       statusEl.hidden = false;

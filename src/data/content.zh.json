@@ -250,6 +250,7 @@
       "subheading": "有任何問題，歡迎與我們聯繫"
     },
     "buttonText": "用 LINE 詢問",
+    "lineNote": "由於 LINE 官方帳號無法主動加您為好友，若您希望以 LINE 聯繫，請先加我們為好友並傳送訊息，我們會盡快回覆您。",
     "infoLabels": {
       "instagram": "Instagram",
       "line": "LINE",
@@ -268,7 +269,9 @@
       "adults": "大人人數",
       "children": "小孩人數",
       "name": "姓名",
-      "contact": "聯絡方式（LINE/Email/電話號碼...）",
+      "contact": "聯絡 Email",
+      "contactPlaceholder": "example@email.com",
+      "contactInvalid": "請輸入有效的 Email 地址，例如 example@email.com",
       "message": "想詢問的內容",
       "optional": "（選填）",
       "submit": "送出詢問",
