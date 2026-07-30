@@ -58,6 +58,8 @@ const EMAIL_PATTERN = '[^@\\s]+@[^@\\s]+\\.[A-Za-z]{2,}';
     </label>
     <label class="bf-field bf-full">
       <span>{f.contact} <i class="req">*</i></span>
+      {/* 官方帳號無法主動加好友，提醒使用者自行加好友再傳訊 */}
+      <span class="bf-note">{f.lineNote}</span>
       <input
         type="email"
         name={E.contact}
@@ -100,6 +102,14 @@ const EMAIL_PATTERN = '[^@\\s]+@[^@\\s]+\\.[A-Za-z]{2,}';
     color: var(--color-muted);
   }
   .bf-field .req { color: #c0392b; font-style: normal; }
+  /* 標題與欄位之間的補充說明，字級再小一階、取消標題的字距 */
+  .bf-field .bf-note {
+    margin-bottom: 0.2rem;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    letter-spacing: 0;
+    opacity: 0.85;
+  }
   .bf-field em { font-style: normal; font-size: 0.75rem; opacity: 0.7; }
   .bf-field input,
   .bf-field textarea {

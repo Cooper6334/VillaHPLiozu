@@ -250,7 +250,6 @@
       "subheading": "Have a question? We'd love to hear from you."
     },
     "buttonText": "Ask via LINE",
-    "lineNote": "A LINE official account cannot add you as a friend first. If you'd rather reach us on LINE, please add us as a friend and send a message — we'll reply as soon as we can.",
     "infoLabels": {
       "instagram": "Instagram",
       "line": "LINE",
@@ -272,6 +271,7 @@
       "contact": "Contact email",
       "contactPlaceholder": "example@email.com",
       "contactInvalid": "Please enter a valid email address, e.g. example@email.com",
+      "lineNote": "A LINE official account cannot add you as a friend first. If you'd rather reach us on LINE, please add us as a friend and send a message — we'll reply as soon as we can.",
       "message": "Your message",
       "optional": "(optional)",
       "submit": "Send inquiry",
