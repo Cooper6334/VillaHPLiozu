@@ -52,3 +52,4 @@ todo.txt
 
 # AI 曝光度測試結果（每次執行都會產生，不進版控）
 aitesting/ai-visibility-results/
+aitesting/summary-*.csv

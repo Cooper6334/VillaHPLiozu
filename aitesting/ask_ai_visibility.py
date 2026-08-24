@@ -6,6 +6,12 @@ AI 曝光度測試腳本
 把 ai-visibility-questions.txt 裡的 10 個問題，分別丟給 claude 與 agy，
 收集回答、判斷有沒有提到「留佇 / liozu-stay.com」，輸出成檔案。
 
+結果檔分兩種：
+  * ai-visibility-results/<時間戳>/  ── 每次執行的完整回答（逐次獨立）
+  * summary-<題庫版本>.csv           ── 共用累積檔，每次執行往後「追加」，
+                                       每列帶 run 欄可辨識是哪一次。
+                                       題庫改題目時把「題庫版本」+1，就會換一個新 csv。
+
 用法（PowerShell / cmd 都可以）：
     python ask_ai_visibility.py                  # 兩個工具都跑，全部 10 題（平行 4 條）
     python ask_ai_visibility.py --jobs 8         # 平行條數調高，跑更快
@@ -46,7 +52,7 @@ RIVAL_PATTERN = re.compile(r"小滿宿|littlefull|Little Full", re.IGNORECASE)
 SEP_WIDE = "=" * 58
 SEP_THIN = "-" * 58
 
-CSV_FIELDS = ["tool", "question_no", "hit", "rival_mentioned", "seconds", "exit_code"]
+CSV_FIELDS = ["run", "tool", "question_no", "hit", "rival_mentioned", "seconds", "exit_code"]
 
 PRINT_LOCK = threading.Lock()
 
@@ -59,6 +65,15 @@ def setup_console():
                 stream.reconfigure(encoding="utf-8", errors="replace")
             except Exception:
                 pass
+
+
+def parse_version(path):
+    """
+    讀題庫檔開頭的「題庫版本：vN」。
+    同一個版本的歷次測試結果，會累積寫進同一個 summary-vN.csv。
+    """
+    m = re.search(r"題庫版本：\s*(\S+)", path.read_text(encoding="utf-8"))
+    return m.group(1) if m else "unversioned"
 
 
 def parse_questions(path):
@@ -196,17 +211,32 @@ def format_block(row):
              code=row["exit_code"], q=row["question"], a=row["answer"])
 
 
-def write_outputs(rows, tools, total, outdir, sandbox, questions_file, started):
+def append_summary(rows, csv_path):
+    """
+    把這次的結果「追加」到共用的 summary-<版本>.csv。
+    每列都帶 run 欄（執行時間戳），所以同一份題庫的歷次結果會累積在同一個檔案裡，
+    可以直接排序、樞紐分析看趨勢。
+    """
+    is_new = not csv_path.exists()
+    # 新檔用 utf-8-sig（Excel 開中文才不亂碼），既有檔用 utf-8 續寫，避免重複塞 BOM
+    encoding = "utf-8-sig" if is_new else "utf-8"
+    with open(csv_path, "a", encoding=encoding, newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS, extrasaction="ignore")
+        if is_new:
+            writer.writeheader()
+        writer.writerows(sorted(rows, key=lambda r: (r["tool"], r["question_no"])))
+
+
+def write_outputs(rows, tools, total, outdir, sandbox, questions_file, started, csv_path, version):
     """把平行跑完的結果依「工具 → 題號」排好序寫成檔案。"""
     combined_path = outdir / "all-answers.txt"
-    csv_path = outdir / "summary.csv"
     done_tools = [t for t in tools if any(r["tool"] == t for r in rows)]
 
     combined = open(combined_path, "w", encoding="utf-8", newline="\n")
     combined.write("\n".join([
         "AI 曝光度測試結果",
         "執行時間：{:%Y-%m-%d %H:%M:%S}".format(started),
-        "題庫：{}（共 {} 題）".format(questions_file, total),
+        "題庫：{}（版本 {}，共 {} 題）".format(questions_file, version, total),
         "工具：{}".format(" ".join(done_tools)),
         "作答目錄（沙箱）：{}".format(sandbox),
         "命中判斷：回答中出現 /{}/ 視為命中".format(HIT_PATTERN.pattern),
@@ -229,11 +259,6 @@ def write_outputs(rows, tools, total, outdir, sandbox, questions_file, started):
                 combined.write(block)
             fh.write("小計：命中 {}/{} 題\n".format(hits, total))
 
-    with open(csv_path, "w", encoding="utf-8-sig", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(sorted(rows, key=lambda r: (r["tool"], r["question_no"])))
-
     lookup = {(r["question_no"], r["tool"]): r["hit"] for r in rows}
     table = [
         SEP_WIDE,
@@ -250,13 +275,13 @@ def write_outputs(rows, tools, total, outdir, sandbox, questions_file, started):
         hits = sum(1 for r in rows if r["tool"] == tool and r["hit"] == "O")
         table.append("{}：命中 {}/{} 題".format(tool, hits, total))
     table.append("")
-    table.append("明細：summary.csv")
+    table.append("明細（{} 全部歷次結果）：{}".format(version, csv_path.name))
 
     report = "\n".join(table)
     combined.write(report + "\n")
     combined.close()
 
-    return report, combined_path, csv_path, done_tools
+    return report, combined_path, done_tools
 
 
 def main():
@@ -277,9 +302,14 @@ def main():
     parser.add_argument("--agy-yolo", action="store_true", help="讓 agy 自動核准工具權限")
     parser.add_argument("--questions", type=Path, default=QUESTIONS_FILE, help="題庫檔路徑")
     parser.add_argument("--outdir", type=Path, default=None, help="輸出目錄")
+    parser.add_argument("--summary", type=Path, default=None,
+                        help="共用結果 CSV 路徑（預設 summary-<題庫版本>.csv）")
     args = parser.parse_args()
 
     tools = [args.only] if args.only else ["claude", "agy"]
+
+    version = parse_version(args.questions)
+    csv_path = args.summary or (ROOT / "summary-{}.csv".format(version))
 
     questions = parse_questions(args.questions)
     if not questions:
@@ -311,7 +341,8 @@ def main():
         sys.exit("錯誤：沒有任何可用的工具")
 
     started = dt.datetime.now()
-    outdir = args.outdir or (RESULTS_ROOT / started.strftime("%Y%m%d-%H%M%S"))
+    run_id = started.strftime("%Y%m%d-%H%M%S")
+    outdir = args.outdir or (RESULTS_ROOT / run_id)
     outdir.mkdir(parents=True, exist_ok=True)
 
     # AI 作答用的中立空目錄：絕對不能是本專案
@@ -324,6 +355,7 @@ def main():
     workers = max(1, min(args.jobs, len(jobs)))
     progress = {"done": 0, "total": len(jobs)}
 
+    print("題庫版本：{}　｜　累積結果：{}".format(version, csv_path))
     print("輸出目錄：{}".format(outdir))
     print("共 {} 題 × {} 個工具 = {} 次提問，平行 {} 條\n".format(
         total, len(available), len(jobs), workers))
@@ -345,8 +377,12 @@ def main():
     if not rows:
         sys.exit("錯誤：沒有任何題目成功執行")
 
-    report, combined_path, csv_path, done_tools = write_outputs(
-        rows, available, total, outdir, sandbox, args.questions, started)
+    for row in rows:
+        row["run"] = run_id
+    append_summary(rows, csv_path)
+
+    report, combined_path, done_tools = write_outputs(
+        rows, available, total, outdir, sandbox, args.questions, started, csv_path, version)
 
     print()
     print(report)
@@ -355,7 +391,7 @@ def main():
     print("  {}".format(combined_path))
     for tool in done_tools:
         print("  {}".format(outdir / "answers-{}.txt".format(tool)))
-    print("  {}".format(csv_path))
+    print("  {}（{} 歷次累積，本次追加 {} 列）".format(csv_path, version, len(rows)))
     return 0
 
 
