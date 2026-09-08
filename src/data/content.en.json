@@ -203,8 +203,8 @@
     "qrAlt": "LINE add-friend QR code",
     "steps": [
       "Ask about availability and pricing via LINE",
-      "Pay a deposit of 30% of the accommodation fee to confirm your booking (deposit is non-refundable)",
-      "Before or on the day of check-in, pay the remaining balance (70% of the accommodation fee) plus a NT$5,000 security deposit, and settle any splash-pool fee (if applicable)",
+      "Pay a deposit of 50% of the accommodation fee to confirm your booking (deposit is non-refundable)",
+      "Before or on the day of check-in, pay the remaining balance (50% of the accommodation fee) plus a NT$5,000 security deposit, and settle any splash-pool fee (if applicable)",
       "After check-out, once the property is confirmed undamaged, the security deposit is refunded in full within 3 days"
     ],
     "noticeTitle": "Check-in Notes",
