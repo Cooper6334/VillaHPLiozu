@@ -173,7 +173,7 @@
       {
         "name": "Kids' Play Area",
         "description": "A dedicated play space, with a baby cot available, where children can have fun while the grown-ups relax.",
-        "images": ["/images/childplace.jpg"]
+        "images": ["/images/childplace_1.jpg", "/images/childplace_2.jpg", "/images/childplace_3.jpg"]
       },
       {
         "name": "Splash Pool & BBQ Area",

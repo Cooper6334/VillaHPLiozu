@@ -173,7 +173,7 @@
       {
         "name": "兒童遊戲區",
         "description": "專屬兒童遊戲空間，並備有嬰兒床，讓小朋友盡情玩樂，大人也能安心休息。",
-        "images": ["/images/childplace.jpg"]
+        "images": ["/images/childplace_1.jpg", "/images/childplace_2.jpg", "/images/childplace_3.jpg"]
       },
       {
         "name": "戲水池及烤肉區",
