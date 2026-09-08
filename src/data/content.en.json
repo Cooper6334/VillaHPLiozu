@@ -96,7 +96,7 @@
       "imageLabel": "ABOUT",
       "paragraphs": [
         "Liozu sits among the rice fields of Dongshan, Yilan, where waves of paddy sway under blue skies and white clouds — a whole-house villa made for slowing down, far from the city's noise.",
-        "The entire house offers 7 double rooms, sleeping 14 as standard and up to 18 adults — ideal for families, friends and groups booking the whole place together. Inside you'll find living-room karaoke, an automatic mahjong table, an outdoor barbecue grill and a splash pool, plus a fully equipped kitchen, for good times from day to night.",
+        "The entire house offers 7 double rooms, sleeping 14 as standard and up to 20 adults — ideal for families, friends and groups booking the whole place together. Inside you'll find living-room karaoke, an automatic mahjong table, an outdoor barbecue grill and a splash pool, plus a fully equipped kitchen, for good times from day to night.",
         "Pets are welcome here too. Leave your schedule to leisure, and let nature recharge you."
       ],
       "buttonText": "Directions & Location",
@@ -177,7 +177,7 @@
       },
       {
         "name": "Splash Pool & BBQ Area",
-        "description": "An outdoor splash pool — perfect for cooling off and playing in summer — plus a barbecue grill for outdoor BBQ gatherings. (Use of the splash pool costs an extra NT$1,500.)",
+        "description": "An outdoor splash pool — perfect for cooling off and playing in summer — plus a barbecue grill for outdoor BBQ gatherings. (Use of the splash pool costs an extra NT$1,000.)",
         "images": ["/images/pool_3.jpg", "/images/pool.jpg", "/images/pool_2.jpg"]
       },
       {
@@ -211,7 +211,7 @@
     "notes": [
       { "label": "Check-in / out", "desc": "Check-in after 15:00, check-out before 11:00." },
       { "label": "Date changes", "desc": "If your plans change, please notify us at least 7 days before check-in (or earlier). The deposit may be carried over once; late notice or more than one change forfeits the deposit with no extension." },
-      { "label": "Splash pool", "desc": "Use of the splash pool costs an extra NT$1,500. Please walk slowly and watch your step around the pool; children must be supervised by an adult at all times." },
+      { "label": "Splash pool", "desc": "Use of the splash pool costs an extra NT$1,000. Please walk slowly and watch your step around the pool; children must be supervised by an adult at all times." },
       { "label": "Barbecue", "desc": "Before leaving the barbecue area, please make sure the flames are completely extinguished. Barbecue grill cleaning is currently free of charge." },
       { "label": "Self check-in", "desc": "This is a self check-in stay. The kitchen is fully equipped — please use it with care and clean up thoroughly afterwards. Drain and flatten trash, sort it, and place it in the bins or trash bags." },
       { "label": "Pets", "desc": "Pets are welcome — NT$300 per pet per night. Please help keep the space clean." },
